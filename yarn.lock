@@ -525,6 +525,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-swipeable-views-core@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@types/react-swipeable-views-core/-/react-swipeable-views-core-0.13.0.tgz#27c41f1d87cbcab0d5d040cb238463f794d33b7c"
+  integrity sha512-XOQacWzaLZhsuA6w12050mGJnmvsE58/tqCrKFKbCnAOM+zpufQ57q/i3BpAynfgjXB4c1Zi5e7Aad8ctyP58Q==
+  dependencies:
+    "@types/react-swipeable-views" "*"
+
 "@types/react-swipeable-views-utils@^0.13.3":
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/@types/react-swipeable-views-utils/-/react-swipeable-views-utils-0.13.3.tgz#e39fbaae1204a99f28fd3cca773915c9903ecad3"
@@ -534,7 +541,7 @@
     "@types/react" "*"
     "@types/react-swipeable-views" "*"
 
-"@types/react-swipeable-views@*":
+"@types/react-swipeable-views@*", "@types/react-swipeable-views@^0.13.1":
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/@types/react-swipeable-views/-/react-swipeable-views-0.13.1.tgz#381c8513deef5426623aa851033ff4f4831ae15c"
   integrity sha512-Nuvywkv9CkwcUgItOCBszkc/pc8YSdiKV5E1AzOJ/p32Db50LgwhJFi5b1ANPgyWxB0Q5yn69aMURHyGi3MLyg==

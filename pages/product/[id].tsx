@@ -38,13 +38,6 @@ interface IProps {
 }
 
 const Product: FC<IProps> = ({ product }) => {
-  console.log(
-    product.categories.map((categories: ICategory, i) => (
-      <Link href={`/category/${categories.type}`} passHref key={i}>
-        {categories.name}
-      </Link>
-    ))
-  );
   return (
     <Layout>
       <LayoutOtherPage

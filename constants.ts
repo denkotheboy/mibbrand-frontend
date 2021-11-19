@@ -17,26 +17,3 @@ export const PRODUCT = "product";
 export const PRODUCTS = "products";
 export const SEARCH = "search";
 export const CATEGORY = "category";
-
-export const MENU = [
-  {
-    text: "Главная",
-    href: PATH.HOME,
-  },
-  {
-    text: "Калькулятор",
-    href: PATH.CALCULATOR,
-  },
-  {
-    text: "Доставка",
-    href: PATH.DELIVERY,
-  },
-  {
-    text: "Контакты",
-    href: PATH.CONTACTS,
-  },
-  {
-    text: "О нас",
-    href: PATH.ABOUT,
-  },
-];

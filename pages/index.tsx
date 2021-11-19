@@ -1,11 +1,11 @@
+import React from "react";
 import type { NextPage } from "next";
 import Layout from "../components/Layout";
 import Grid from "@mui/material/Grid";
-import Carousel from "../components/Carousel";
 import Products, { IProductShort } from "../components/Products";
-import axios from "axios";
 import { api } from "../api";
-import { PRODUCTS } from "../constants";
+import { PRODUCTS, TITLE } from "../constants";
+import Carousel from "../components/Carousel";
 
 interface IProps {
   products: IProductShort[];
@@ -15,11 +15,11 @@ interface IProps {
 const Home: NextPage<IProps> = ({ products, error }) => {
   return (
     <Layout>
-      <title>test</title>
-      <Grid container justifyContent="center">
+      <title>{TITLE}</title>
+      <Grid container item justifyContent="center">
         <Carousel />
       </Grid>
-      <Grid container justifyContent="center">
+      <Grid container item justifyContent="center">
         <Products products={products} errorResp={error} />
       </Grid>
     </Layout>

@@ -9,9 +9,9 @@ import {
 import Button from "@mui/material/Button";
 import styles from "../styles/Carousel.module.scss";
 import banner from "../public/banner.jpg";
+import banner2 from "../public/banner2.jpg";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
-
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const Carousel = () => {
@@ -22,6 +22,7 @@ const Carousel = () => {
       interval={10000}
       index={index}
       onChangeIndex={(val: number) => setIndex(val)}
+      enableMouseEvents
     >
       <Grid className={styles.carousel}>
         <Grid className={styles.item}>
@@ -65,7 +66,7 @@ const Carousel = () => {
         <Grid className={styles.item}>
           <Grid
             style={{
-              background: `center no-repeat url("${banner.src}")`,
+              background: `center no-repeat url("${banner2.src}")`,
               backgroundSize: "cover",
             }}
             container

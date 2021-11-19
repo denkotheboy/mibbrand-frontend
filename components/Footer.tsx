@@ -8,10 +8,10 @@ import {
 } from "@mui/material";
 import style from "../styles/Footer.module.scss";
 import { Instagram } from "@mui/icons-material";
-import { MENU } from "../constants";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import logo from "../public/logo.png";
+import { MENU } from "./Header";
 
 const Footer = () => {
   const router = useRouter();
