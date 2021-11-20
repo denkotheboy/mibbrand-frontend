@@ -17,6 +17,7 @@ import { TITLE } from "../constants";
 import { useRouter } from "next/router";
 import { MENU } from "./Header";
 import PhoneIcon from "@mui/icons-material/Phone";
+import NavigationDrawer from "./NavigationDrawer";
 
 const NavBarMobile = () => {
   const router = useRouter();
@@ -29,33 +30,11 @@ const NavBarMobile = () => {
 
   return (
     <>
-      <Drawer
-        sx={{ display: { xs: "flex", md: "none" } }}
-        anchor="left"
+      <NavigationDrawer
         open={isOpen}
         onClose={() => setIsOpen(false)}
-      >
-        <List>
-          {MENU.map((item, index) => (
-            <ListItem key={index}>
-              <ListItemButton onClick={() => onClickHandler(item.href)}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-          <ListItem>
-            <a href={"tel:+79221775194"}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <PhoneIcon />
-                </ListItemIcon>
-                <ListItemText primary="+79221775194" />
-              </ListItemButton>
-            </a>
-          </ListItem>
-        </List>
-      </Drawer>
+        onClick={(value) => onClickHandler(value)}
+      />
       <AppBar
         position="relative"
         color="inherit"

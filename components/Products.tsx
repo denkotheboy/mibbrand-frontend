@@ -76,39 +76,23 @@ const Products = ({
               onClick={() => router.push(`/product/${item.id}`)}
               key={index}
               sx={{
+                cursor: "pointer",
                 "&:hover": {
                   color: "green",
                 },
               }}
             >
-              <Grid
-                item
-                xs
-                minHeight={300}
-                sx={{
-                  borderRadius: 2,
-                  background: `url(${
-                    item.image !== null ? item.image : noPhoto.src
-                  }) no-repeat center center`,
-                  backgroundSize: "100% 100%",
-                  "&:hover": {
-                    animation: "anm 0.7s ease forwards",
-                    cursor: "pointer",
-                  },
-                  "@keyframes anm": {
-                    to: {
-                      backgroundSize: "115% 115%",
-                    },
-                  },
-                }}
+              <img
+                src={`${item.image}`}
+                srcSet={`${item.image}`}
+                alt={item.name}
+                loading="lazy"
               />
-              <Grid item xs>
-                <ImageListItemBar
-                  title={item.name}
-                  subtitle={<strong>{item.price} руб.</strong>}
-                  position="below"
-                />
-              </Grid>
+              <ImageListItemBar
+                title={item.name}
+                subtitle={<strong>{item.price} руб.</strong>}
+                position="below"
+              />
             </ImageListItem>
           ))}
         </ImageList>

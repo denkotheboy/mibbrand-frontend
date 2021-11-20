@@ -31,7 +31,7 @@ const Footer = () => {
       xs
       justifyContent="center"
       className={style.footer}
-      marginTop={2}
+      marginTop={5}
     >
       <Grid item xs={5} padding={2}>
         <Grid item xs textAlign="start" padding={2}>
