@@ -7,6 +7,11 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Layout from "../../components/Layout";
 import Link from "next/link";
+import Images from "../../components/ProductCard/images";
+import ProductCard from "../../components/ProductCard";
+import { Box } from "@mui/material";
+import ImagesMobile from "../../components/ProductCard/ImagesMobile";
+import Mobile from "../../components/ProductCard/Mobile";
 
 export interface ICategory {
   id: number;
@@ -55,85 +60,23 @@ const Product: FC<IProps> = ({ product }) => {
           },
         ]}
       >
-        <Grid container item xs={12} justifyContent="center">
-          <Grid container item xs={10}>
-            <Grid container item xs={8} padding={1}>
-              {product.images.map((image: IImage, index: number) => (
-                <img
-                  key={index}
-                  style={{ width: "48%", margin: 5 }}
-                  src={image.url}
-                  srcSet={image.url}
-                  alt=""
-                  loading="lazy"
-                />
-              ))}
-            </Grid>
-            <Grid item xs={4}>
-              <Grid item xs={12} textAlign="start" padding={1}>
-                Цена:
-                <Typography color="green" fontSize="1.6vw">
-                  {product.price} руб.
-                </Typography>
-                <hr />
-                <Button variant="contained" color="success" size="large">
-                  Купить сейчас
-                </Button>
-                <hr />
-                {product.categories.length > 0 ? (
-                  <>
-                    Категория:{" "}
-                    <Typography color="green">
-                      {product.categories.map((categories: ICategory, i) => (
-                        <Link
-                          href={`/category/${categories.type}`}
-                          passHref
-                          key={i}
-                        >
-                          {categories.name}
-                        </Link>
-                      ))}
-                    </Typography>
-                  </>
-                ) : null}
-                {product.color ? (
-                  <>
-                    Цвет: <Typography color="green">{product.color}</Typography>
-                  </>
-                ) : null}
-                {product.composition ? (
-                  <>
-                    Состав:{" "}
-                    <Typography color="green">{product.composition}</Typography>
-                  </>
-                ) : null}
-                {product.size ? (
-                  <>
-                    Размеры:
-                    <Typography color="green">{product.size}</Typography>{" "}
-                  </>
-                ) : null}
-                <hr />
-              </Grid>
-              <Grid item xs={12} padding={1} textAlign="start">
-                <Typography color="green" fontSize="1.6vw">
-                  Описание
-                </Typography>
-                <hr />
-                <Typography
-                  sx={{
-                    fontSize: 15,
-                    color: "#333",
-                    lineHeight: 1.5,
-                    width: "80%",
-                  }}
-                >
-                  {product.description}
-                </Typography>
-                <hr />
-              </Grid>
-            </Grid>
-          </Grid>
+        <Grid
+          container
+          item
+          xs={12}
+          sx={{ display: { md: "flex", xs: "none" } }}
+          justifyContent="center"
+        >
+          <ProductCard product={product} />
+        </Grid>
+        <Grid
+          container
+          item
+          xs={12}
+          justifyContent="center"
+          sx={{ display: { md: "none", xs: "flex" } }}
+        >
+          <Mobile product={product} />
         </Grid>
       </LayoutOtherPage>
     </Layout>

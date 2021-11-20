@@ -4,11 +4,13 @@ import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import noPhoto from "../public/no-photo.png";
 import { api } from "../api";
 import { PRODUCTS } from "../constants";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 export interface IProductShort {
   id: number;
@@ -28,6 +30,10 @@ const Products = ({
   errorResp = "",
   loadMore = true,
 }: IProps) => {
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.down("sm"));
+  const sm = useMediaQuery(theme.breakpoints.down("md"));
+  const md = useMediaQuery(theme.breakpoints.down("lg"));
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(errorResp);
@@ -45,19 +51,26 @@ const Products = ({
       });
   }, [products.length]);
 
+  const cols = useMemo(() => {
+    if (xs) return 1;
+    else if (sm) return 2;
+    else if (md) return 3;
+    return 4;
+  }, [md, sm, xs]);
+
   return (
     <>
       <Grid
         item
         xs={10}
         padding={2}
-        paddingTop={10}
+        paddingTop={5}
         justifyContent="center"
         textAlign="center"
       >
         {loading && list.length === 0 && <CircularProgress />}
         {error && <span style={{ color: "red" }}>{error}</span>}
-        <ImageList cols={4} gap={20}>
+        <ImageList cols={cols} gap={20}>
           {list.map((item: IProductShort, index: number) => (
             <ImageListItem
               onClick={() => router.push(`/product/${item.id}`)}

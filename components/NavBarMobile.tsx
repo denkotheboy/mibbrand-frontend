@@ -57,7 +57,7 @@ const NavBarMobile = () => {
         </List>
       </Drawer>
       <AppBar
-        position="static"
+        position="relative"
         color="inherit"
         sx={{ display: { xs: "flex", md: "none" } }}
       >

@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Products, { IProductShort } from "../components/Products";
 import { api } from "../api";
 import { PRODUCTS, TITLE } from "../constants";
-import Carousel from "../components/Carousel";
+import Index from "../components/Carousel";
 
 interface IProps {
   products: IProductShort[];
@@ -17,7 +17,7 @@ const Home: NextPage<IProps> = ({ products, error }) => {
     <Layout>
       <title>{TITLE}</title>
       <Grid container item justifyContent="center">
-        <Carousel />
+        <Index />
       </Grid>
       <Grid container item justifyContent="center">
         <Products products={products} errorResp={error} />

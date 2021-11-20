@@ -47,7 +47,7 @@ const Search = () => {
       width: 300,
     },
     borderRadius: 2,
-    border: "1px solid green",
+    border: "1px solid black",
     p: 1,
     bgcolor: "background.paper",
   };

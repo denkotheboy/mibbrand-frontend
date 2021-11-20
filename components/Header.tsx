@@ -1,11 +1,11 @@
 import React from "react";
-import { Button, Grid, SvgIconTypeMap, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { Phone } from "@mui/icons-material";
 import { PATH } from "../constants";
 import { useRouter } from "next/router";
 import style from "../styles/Header.module.scss";
 import Image from "next/image";
-import logo from "../public/logo.png";
+import logo from "../public/logo5.png";
 import Search from "./Search";
 import NavBarMobile from "./NavBarMobile";
 import HomeIcon from "@mui/icons-material/Home";
