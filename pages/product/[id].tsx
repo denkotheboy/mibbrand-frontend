@@ -45,6 +45,7 @@ interface IProps {
 const Product: FC<IProps> = ({ product }) => {
   return (
     <Layout>
+      <title>{product.name}</title>
       <LayoutOtherPage
         title={product.name}
         breadCrumbs={[
