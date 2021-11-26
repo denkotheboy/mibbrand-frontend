@@ -2,15 +2,9 @@ import { FC } from "react";
 import LayoutOtherPage from "../../components/LayoutOtherPage";
 import { PATH, PRODUCT, SERVER } from "../../constants";
 import axios from "axios";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 import Layout from "../../components/Layout";
-import Link from "next/link";
-import Images from "../../components/ProductCard/images";
 import ProductCard from "../../components/ProductCard";
-import { Box } from "@mui/material";
-import ImagesMobile from "../../components/ProductCard/ImagesMobile";
 import Mobile from "../../components/ProductCard/Mobile";
 
 export interface ICategory {

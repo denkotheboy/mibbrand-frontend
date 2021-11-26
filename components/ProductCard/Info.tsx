@@ -7,7 +7,6 @@ import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Chip from "@mui/material/Chip";
-import ColorLensIcon from "@mui/icons-material/ColorLens";
 
 interface IProps {
   product: IProduct;
