@@ -7,10 +7,10 @@ import Button from "@mui/material/Button";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import {
-  addBasketList,
-  BASKET_LIST,
-  removeBasketList,
-} from "../../store/reducers/basket";
+  addCartList,
+  CART_LIST,
+  removeCartList,
+} from "../../store/reducers/cart";
 import { useAppDispatch, useAppSelector } from "../../hooks/store.hooks";
 import { shallowEqual } from "react-redux";
 import Divider from "@mui/material/Divider";
@@ -19,15 +19,15 @@ interface IProps {
   id: number;
 }
 
-const AddProductToCard: FC<IProps> = ({ id }) => {
+const ButtonCart: FC<IProps> = ({ id }) => {
   const [count, setCount] = useState<number>(1);
   const dispatch = useAppDispatch();
-  const basketList = useAppSelector(BASKET_LIST, shallowEqual);
+  const cartList = useAppSelector(CART_LIST, shallowEqual);
 
   const includeProduct = useMemo(() => {
-    const productInBasket = basketList.find((item) => item.id === id);
+    const productInBasket = cartList.find((item) => item.id === id);
     return !!productInBasket;
-  }, [basketList, id]);
+  }, [cartList, id]);
 
   return (
     <>
@@ -35,7 +35,7 @@ const AddProductToCard: FC<IProps> = ({ id }) => {
         <IconButton
           disabled={includeProduct}
           size="small"
-          onClick={() => setCount((prev) => (prev - 1 < 1 ? prev : --prev))}
+          onClick={() => setCount((prev) => (prev - 1 < 0 ? prev : --prev))}
         >
           <RemoveIcon />
         </IconButton>
@@ -67,8 +67,8 @@ const AddProductToCard: FC<IProps> = ({ id }) => {
         }
         onClick={
           includeProduct
-            ? () => dispatch(removeBasketList(id))
-            : () => dispatch(addBasketList({ id, count }))
+            ? () => dispatch(removeCartList(id))
+            : () => dispatch(addCartList({ id, count }))
         }
       >
         {includeProduct ? "Удалить из корзины" : "Добавить в корзину"}
@@ -77,4 +77,4 @@ const AddProductToCard: FC<IProps> = ({ id }) => {
   );
 };
 
-export default AddProductToCard;
+export default ButtonCart;

@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography } from "@mui/material";
 import Search from "./Search";
 import { TITLE } from "../constants";
 import NavigationDrawer from "./NavigationDrawer";
-import Basket from "./Basket";
+import Basket from "./Cart";
 
 const NavBarMobile = () => {
   return (

@@ -8,6 +8,7 @@ export const PATH = {
   PRODUCT: "/product/:id",
   CALCULATOR: "/calculator",
   DELIVERY: "/delivery",
+  CART: "/cart",
 };
 
 export const SERVER = "http://192.168.1.151:19090/api/";
@@ -17,3 +18,4 @@ export const PRODUCT = "product";
 export const PRODUCTS = "products";
 export const SEARCH = "search";
 export const CATEGORY = "category";
+export const CART = "cart";

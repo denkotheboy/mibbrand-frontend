@@ -13,7 +13,7 @@ import CalculateIcon from "@mui/icons-material/Calculate";
 import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import InfoIcon from "@mui/icons-material/Info";
-import Basket from "./Basket";
+import Cart from "./Cart";
 
 export const MENU = [
   {
@@ -92,7 +92,7 @@ const Header = () => {
         <Grid container item xs={2} alignItems="center">
           <Grid container alignItems="center" justifyContent="center">
             <Grid container item xs={7} justifyContent="center">
-              <Basket />
+              <Cart />
             </Grid>
             <Grid container item xs={5} justifyContent="center">
               <Search />

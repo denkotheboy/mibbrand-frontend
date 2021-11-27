@@ -5,7 +5,7 @@ import Link from "next/link";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
-import AddProductToCard from "../AddProductToCard";
+import ButtonCart from "../Cart/Button";
 
 interface IProps {
   product: IProduct;
@@ -23,7 +23,7 @@ const Info: FC<IProps> = ({ product }) => {
         {product.price} руб.
       </Typography>
       <Divider variant="middle" sx={{ margin: 2 }} />
-      <AddProductToCard id={product.id} />
+      <ButtonCart id={product.id} />
       <Divider variant="middle" sx={{ margin: 2 }} />
       {product.categories.length > 0 ? (
         <>

@@ -6,14 +6,11 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { useCallback, useMemo, useState } from "react";
 import { useRouter } from "next/router";
-import noPhoto from "../public/no-photo.png";
 import { api } from "../api";
 import { PRODUCTS } from "../constants";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
-import Short from "./AddProductToCard/Short";
+import Icon from "./Cart/Icon";
 
 export interface IProductShort {
   id: number;
@@ -95,7 +92,7 @@ const Products = ({
                 position="below"
                 title={item.name}
                 subtitle={<strong>{item.price} руб.</strong>}
-                actionIcon={<Short id={item.id} />}
+                actionIcon={<Icon id={item.id} />}
               />
             </ImageListItem>
           ))}
