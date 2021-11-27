@@ -11,6 +11,9 @@ import { api } from "../api";
 import { PRODUCTS } from "../constants";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import InfoIcon from "@mui/icons-material/Info";
+import Short from "./AddProductToCard/Short";
 
 export interface IProductShort {
   id: number;
@@ -89,9 +92,10 @@ const Products = ({
                 loading="lazy"
               />
               <ImageListItemBar
+                position="below"
                 title={item.name}
                 subtitle={<strong>{item.price} руб.</strong>}
-                position="below"
+                actionIcon={<Short id={item.id} />}
               />
             </ImageListItem>
           ))}

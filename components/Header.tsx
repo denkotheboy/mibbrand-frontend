@@ -13,6 +13,7 @@ import CalculateIcon from "@mui/icons-material/Calculate";
 import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import InfoIcon from "@mui/icons-material/Info";
+import Basket from "./Basket";
 
 export const MENU = [
   {
@@ -35,11 +36,6 @@ export const MENU = [
     href: PATH.CONTACTS,
     icon: <ContactsIcon />,
   },
-  {
-    text: "О нас",
-    href: PATH.ABOUT,
-    icon: <InfoIcon />,
-  },
 ];
 
 const Header = () => {
@@ -58,7 +54,7 @@ const Header = () => {
         <Grid item xs={2} padding={1} textAlign="start">
           <Image src={logo} alt="Logo" />
         </Grid>
-        <Grid container item xs={7} padding={1} alignItems="center">
+        <Grid container item xs={6} padding={1} alignItems="center">
           <Grid item container xs alignContent="center">
             {MENU.map((item, index) => (
               <Grid item xs textAlign="center" key={index}>
@@ -93,9 +89,12 @@ const Header = () => {
             </a>
           </Grid>
         </Grid>
-        <Grid container item xs={1} alignItems="center">
+        <Grid container item xs={2} alignItems="center">
           <Grid container alignItems="center" justifyContent="center">
-            <Grid item>
+            <Grid container item xs={7} justifyContent="center">
+              <Basket />
+            </Grid>
+            <Grid container item xs={5} justifyContent="center">
               <Search />
             </Grid>
           </Grid>

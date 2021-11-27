@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography } from "@mui/material";
 import Search from "./Search";
 import { TITLE } from "../constants";
 import NavigationDrawer from "./NavigationDrawer";
+import Basket from "./Basket";
 
 const NavBarMobile = () => {
   return (
@@ -16,6 +17,7 @@ const NavBarMobile = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {TITLE}
         </Typography>
+        <Basket />
         <Search />
       </Toolbar>
     </AppBar>

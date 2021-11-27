@@ -1,12 +1,11 @@
 import React, { FC } from "react";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import { ICategory, IProduct } from "../../pages/product/[id]";
 import Link from "next/link";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Chip from "@mui/material/Chip";
+import AddProductToCard from "../AddProductToCard";
 
 interface IProps {
   product: IProduct;
@@ -24,14 +23,7 @@ const Info: FC<IProps> = ({ product }) => {
         {product.price} руб.
       </Typography>
       <Divider variant="middle" sx={{ margin: 2 }} />
-      <Button
-        variant="contained"
-        color="success"
-        size="large"
-        startIcon={<ShoppingCartIcon />}
-      >
-        Купить сейчас
-      </Button>
+      <AddProductToCard id={product.id} />
       <Divider variant="middle" sx={{ margin: 2 }} />
       {product.categories.length > 0 ? (
         <>
