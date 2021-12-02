@@ -41,7 +41,7 @@ const Category: NextPage<IProps> = ({ products, error, category }) => {
 
 export async function getServerSideProps({ params }: { params: any }) {
   const resp = await api.get<{ products: IProductShort[]; category: string }>(
-    `${SERVER}${CATEGORY}?type=${params.type}`
+    `${SERVER}${CATEGORY}?id=${params.id}`
   );
   if (resp.status === 200) {
     return {

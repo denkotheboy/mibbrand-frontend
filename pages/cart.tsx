@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { NextPage } from "next";
 import { CART, PATH, TITLE } from "../constants";
 import Grid from "@mui/material/Grid";
@@ -11,12 +17,14 @@ import Table from "../components/Cart/Table";
 import { useAppSelector } from "../hooks/store.hooks";
 import { CART_LIST } from "../store/reducers/cart";
 import { shallowEqual } from "react-redux";
+import OrderForm from "../components/OrderForm";
 
 const Cart: NextPage = () => {
   const listToCart = useAppSelector(CART_LIST, shallowEqual);
   const [products, setProducts] = useState<IProductShort[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const flag = useRef<boolean>(false);
 
   const fetch = useCallback(async (list: number[]) => {
     setLoading(true);
@@ -49,8 +57,9 @@ const Cart: NextPage = () => {
   }, [listToCart, products]);
 
   useEffect(() => {
-    if (listToCart.length > 0) {
+    if (listToCart.length > 0 && !flag.current) {
       fetch(listToCart.map((item) => item.id));
+      flag.current = true;
     }
   }, [fetch, listToCart]);
 
@@ -72,13 +81,18 @@ const Cart: NextPage = () => {
         <Grid container xs={12} item justifyContent="center">
           <Grid container item xs={12} sm={10} justifyContent="center">
             {error}
-            {loading ? (
-              <CircularProgress />
-            ) : list.length > 0 ? (
-              <Table list={list} />
-            ) : (
-              "Корзина пуста"
-            )}
+            {list.length > 0 ? <Table list={list} /> : "Корзина пуста"}
+            {loading ? <CircularProgress /> : null}
+          </Grid>
+          <Grid
+            container
+            item
+            xs={12}
+            sm={10}
+            justifyContent="center"
+            padding={5}
+          >
+            <OrderForm />
           </Grid>
         </Grid>
       </LayoutOtherPage>

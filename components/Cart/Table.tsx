@@ -13,7 +13,8 @@ import { IProductShort } from "../Products";
 import Image from "next/image";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAppDispatch } from "../../hooks/store.hooks";
-import { removeCartList } from "../../store/reducers/cart";
+import { removeCartList, updateCountCartList } from "../../store/reducers/cart";
+import InputCount from "../InputCount";
 
 export interface IListCart extends IProductShort {
   count: number;
@@ -40,7 +41,7 @@ const Table: FC<IProps> = ({ list }) => {
         <TableBody>
           {list.map((item) => (
             <TableRow
-              key={item.name}
+              key={item.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell>
@@ -50,7 +51,20 @@ const Table: FC<IProps> = ({ list }) => {
                 {item.name}
               </TableCell>
               <TableCell>{item.price}</TableCell>
-              <TableCell>{item.count}</TableCell>
+              <TableCell>
+                <InputCount
+                  includeProduct={false}
+                  setCount={(value) =>
+                    dispatch(
+                      updateCountCartList({
+                        id: item.id,
+                        count: Number(value),
+                      })
+                    )
+                  }
+                  count={item.count}
+                />
+              </TableCell>
               <TableCell>
                 <IconButton
                   aria-label="delete"

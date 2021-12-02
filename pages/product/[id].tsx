@@ -10,8 +10,7 @@ import Mobile from "../../components/ProductCard/Mobile";
 export interface ICategory {
   id: number;
   name: string;
-  product: number;
-  type: number;
+  image: string;
 }
 
 export interface IImage {

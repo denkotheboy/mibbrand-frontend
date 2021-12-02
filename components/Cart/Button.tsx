@@ -14,6 +14,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../hooks/store.hooks";
 import { shallowEqual } from "react-redux";
 import Divider from "@mui/material/Divider";
+import InputCount from "../InputCount";
 
 interface IProps {
   id: number;
@@ -31,32 +32,11 @@ const ButtonCart: FC<IProps> = ({ id }) => {
 
   return (
     <>
-      <Stack direction="row">
-        <IconButton
-          disabled={includeProduct}
-          size="small"
-          onClick={() => setCount((prev) => (prev - 1 < 0 ? prev : --prev))}
-        >
-          <RemoveIcon />
-        </IconButton>
-        <TextField
-          disabled={includeProduct}
-          size="small"
-          inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-          sx={{ width: 100 }}
-          value={count}
-          onChange={(e) =>
-            setCount(Number(e.target.value) > 0 ? Number(e.target.value) : 1)
-          }
-        />
-        <IconButton
-          disabled={includeProduct}
-          size="small"
-          onClick={() => setCount((prev) => ++prev)}
-        >
-          <AddIcon />
-        </IconButton>
-      </Stack>
+      <InputCount
+        includeProduct={includeProduct}
+        setCount={setCount}
+        count={count}
+      />
       <Divider variant="middle" sx={{ margin: 2 }} />
       <Button
         disableRipple

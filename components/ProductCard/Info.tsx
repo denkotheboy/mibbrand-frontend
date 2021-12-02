@@ -29,7 +29,7 @@ const Info: FC<IProps> = ({ product }) => {
         <>
           Категория:{" "}
           {product.categories.map((categories: ICategory, i) => (
-            <Link href={`/category/${categories.type}`} passHref key={i}>
+            <Link href={`/category/${categories.id}`} passHref key={i}>
               <Chip
                 label={categories.name}
                 variant="outlined"
@@ -41,12 +41,12 @@ const Info: FC<IProps> = ({ product }) => {
           <Divider variant="middle" sx={{ margin: 2 }} />
         </>
       ) : null}
-      {product.color ? (
-        <>
-          Цвет: <span style={{ color: "green" }}>{product.color}</span>
-          <Divider variant="middle" sx={{ margin: 2 }} />
-        </>
-      ) : null}
+      {/*{product.color ? (*/}
+      {/*  <>*/}
+      {/*    Цвет: <span style={{ color: "green" }}>{product.color}</span>*/}
+      {/*    <Divider variant="middle" sx={{ margin: 2 }} />*/}
+      {/*  </>*/}
+      {/*) : null}*/}
       {product.composition ? (
         <>
           Состав: <span style={{ color: "green" }}>{product.composition}</span>

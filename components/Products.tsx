@@ -11,6 +11,8 @@ import { PRODUCTS } from "../constants";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Icon from "./Cart/Icon";
+import Image from "next/image";
+import Box from "@mui/material/Box";
 
 export interface IProductShort {
   id: number;
@@ -88,6 +90,13 @@ const Products = ({
                 alt={item.name}
                 loading="lazy"
               />
+              {/*<Image*/}
+              {/*  src={item.image}*/}
+              {/*  alt={item.name}*/}
+              {/*  layout="responsive"*/}
+              {/*  height={300}*/}
+              {/*  width={300}*/}
+              {/*/>*/}
               <ImageListItemBar
                 position="below"
                 title={item.name}

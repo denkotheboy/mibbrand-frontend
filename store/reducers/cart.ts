@@ -22,11 +22,8 @@ export const cartSlice = createSlice({
       state.list.push(action.payload);
     },
     updateCountCartList: (state, action: PayloadAction<IProductCart>) => {
-      state.list = state.list.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, count: action.payload.count }
-          : item
-      );
+      const elem = state.list.find((item) => item.id === action.payload.id);
+      if (elem) elem.count = action.payload.count;
     },
     removeCartList: (state, action: PayloadAction<number>) => {
       state.list = state.list.filter((item) => item.id !== action.payload);
