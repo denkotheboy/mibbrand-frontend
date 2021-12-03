@@ -1,0 +1,16 @@
+.productList__product {
+  cursor: pointer;
+  text-align: left;
+  padding: 10px;
+  font-size: 0.9vw;
+}
+
+.productList__product:hover {
+  color: green;
+  border: 1px solid green;
+  border-radius: 10px;
+}
+
+.productList__product__price {
+  font-size: 0.8vw;
+}

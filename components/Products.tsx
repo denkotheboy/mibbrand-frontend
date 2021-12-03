@@ -1,9 +1,6 @@
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { useCallback, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import { api } from "../api";
@@ -12,7 +9,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Icon from "./Cart/Icon";
 import Image from "next/image";
-import Box from "@mui/material/Box";
+import classes from "../styles/Products.module.scss";
 
 export interface IProductShort {
   id: number;
@@ -73,39 +70,12 @@ const Products = ({
       >
         {loading && list.length === 0 && <CircularProgress />}
         {error && <span style={{ color: "red" }}>{error}</span>}
-        {/*<ImageList cols={cols} gap={20}>*/}
-        {/*  {list.map((item: IProductShort, index: number) => (*/}
-        {/*    <ImageListItem*/}
-        {/*      onClick={() => router.push(`/product/${item.id}`)}*/}
-        {/*      key={index}*/}
-        {/*      sx={{*/}
-        {/*        cursor: "pointer",*/}
-        {/*        "&:hover": {*/}
-        {/*          color: "green",*/}
-        {/*        },*/}
-        {/*      }}*/}
-        {/*      style={{ position: "relative", width: "20vw", height: "20vw" }}*/}
-        {/*    >*/}
-        {/*      <Image*/}
-        {/*        src={item.image}*/}
-        {/*        alt={item.name}*/}
-        {/*        layout="fill"*/}
-        {/*        objectFit="contain"*/}
-        {/*      />*/}
-        {/*      <ImageListItemBar*/}
-        {/*        title={item.name}*/}
-        {/*        subtitle={<strong>{item.price} руб.</strong>}*/}
-        {/*        actionIcon={<Icon id={item.id} />}*/}
-        {/*      />*/}
-        {/*    </ImageListItem>*/}
-        {/*  ))}*/}
-        {/*</ImageList>*/}
         {list.map((product) => (
           <Grid
             key={product.id}
             item
             xs={3}
-            padding={3}
+            className={classes.productList__product}
             onClick={() => router.push(`/product/${product.id}`)}
           >
             <Grid item xs={12}>
@@ -118,8 +88,17 @@ const Products = ({
                 objectFit="cover"
               />
             </Grid>
-            <Grid item xs={12}>
-              {product.name}
+            <Grid container item xs={12}>
+              <Grid item xs={10} paddingLeft={1}>
+                {product.name}
+                <br />
+                <span className={classes.productList__product__price}>
+                  {product.price}руб.
+                </span>
+              </Grid>
+              <Grid item xs={2} textAlign="right">
+                <Icon id={product.id} />
+              </Grid>
             </Grid>
           </Grid>
         ))}
