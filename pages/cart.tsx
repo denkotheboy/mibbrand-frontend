@@ -18,6 +18,7 @@ import { useAppSelector } from "../hooks/store.hooks";
 import { CART_LIST } from "../store/reducers/cart";
 import { shallowEqual } from "react-redux";
 import OrderForm from "../components/OrderForm";
+import NotFound from "../components/Cart/NotFound";
 
 const Cart: NextPage = () => {
   const listToCart = useAppSelector(CART_LIST, shallowEqual);
@@ -81,7 +82,7 @@ const Cart: NextPage = () => {
         <Grid container xs={12} item justifyContent="center">
           <Grid container item xs={12} sm={10} justifyContent="center">
             {error}
-            {list.length > 0 ? <Table list={list} /> : "Корзина пуста"}
+            {list.length > 0 ? <Table list={list} /> : <NotFound />}
             {loading ? <CircularProgress /> : null}
           </Grid>
           <Grid
@@ -92,7 +93,9 @@ const Cart: NextPage = () => {
             justifyContent="center"
             padding={5}
           >
-            <OrderForm />
+            {list.length > 0 ? (
+              <OrderForm setError={(value) => setError(value)} />
+            ) : null}
           </Grid>
         </Grid>
       </LayoutOtherPage>

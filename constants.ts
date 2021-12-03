@@ -19,3 +19,4 @@ export const PRODUCTS = "products";
 export const SEARCH = "search";
 export const CATEGORY = "category";
 export const CART = "cart";
+export const ORDER = "order";

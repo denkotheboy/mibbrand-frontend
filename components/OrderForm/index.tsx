@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import MuiPhoneNumber from "material-ui-phone-number";
 import TextField from "@mui/material/TextField";
@@ -6,6 +6,15 @@ import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import Button from "@mui/material/Button";
+import validatePhone from "./phone";
+import validateEmail from "./email";
+import validateName from "./FullName";
+import { api } from "../../api";
+import { ORDER, PRODUCTS } from "../../constants";
+import { useAppSelector } from "../../hooks/store.hooks";
+import { CART_LIST } from "../../store/reducers/cart";
+import { shallowEqual } from "react-redux";
+import Modal from "./Modal";
 
 interface ITextField {
   value: string;
@@ -13,37 +22,97 @@ interface ITextField {
   helpText: string;
 }
 
-const MyComponent = () => {
+interface IProps {
+  setError: (value: string) => void;
+}
+
+const OrderForm: FC<IProps> = ({ setError }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const products = useAppSelector(CART_LIST, shallowEqual);
+  const [modal, setModal] = useState<string>("");
+
   const [name, setName] = useState<ITextField>({
     value: "",
     error: "",
-    helpText: "Введите ваше имя",
+    helpText: "Введите ваше ФИО (обязательное)",
   });
   const [phone, setPhone] = useState<ITextField>({
     value: "",
     error: "",
-    helpText: "Введите ваш телефон",
+    helpText: "Введите ваш телефон (обязательное)",
   });
   const [email, setEmail] = useState<ITextField>({
     value: "",
     error: "",
-    helpText: "Введите вашу почту",
+    helpText: "Введите вашу почту (обязательное)",
   });
+  const [comments, setComments] = useState<string>("");
 
-  const onSubmitHandler = useCallback(() => {
-    if (name.value === "") {
-      setName((prev) => ({ ...prev, error: "Имя не может быть пустым" }));
+  const fetch = useCallback(async () => {
+    setLoading(true);
+    await api
+      .post(ORDER, {
+        data: {
+          full_name: name.value,
+          phone: phone.value,
+          email: email.value,
+          comments,
+          products,
+        },
+      })
+      .then((resp) => {
+        if (resp.status === 200) {
+          setModal("Заявка успешно отправлена");
+        } else {
+          setError(resp.data);
+        }
+      })
+      .catch((e) => setError(JSON.stringify(e)));
+    setLoading(false);
+  }, [comments, email.value, name.value, phone.value, products, setError]);
+
+  const onSubmitHandler = useCallback(async () => {
+    const validName = validateName(name.value);
+    if (validName) {
+      setName((prev) => ({ ...prev, error: validName }));
+      return;
     }
-  }, [name.value]);
+    const validPhone = validatePhone(phone.value);
+    if (validPhone) {
+      setPhone((prev) => ({ ...prev, error: validPhone }));
+      return;
+    }
+    const validEmail = validateEmail(email.value);
+    if (!validEmail) {
+      setEmail((prev) => ({ ...prev, error: "Неверный формат почты" }));
+      return;
+    }
+    await fetch();
+  }, [email.value, fetch, name.value, phone.value]);
 
   useEffect(() => {
-    if (name.value !== "" && name.error !== "")
+    if (name.value !== "" && name.error !== "") {
       setName((prev) => ({ ...prev, error: "" }));
-  }, [name.value, name.error]);
+    }
+    if (phone.value !== "" && phone.error !== "") {
+      setPhone((prev) => ({ ...prev, error: "" }));
+    }
+    if (email.value !== "" && email.error !== "") {
+      setEmail((prev) => ({ ...prev, error: "" }));
+    }
+  }, [
+    name.value,
+    name.error,
+    phone.value,
+    phone.error,
+    email.value,
+    email.error,
+  ]);
 
   return (
     <Grid container item xs={12} justifyContent="center">
       <Grid item xs={4} padding={3}>
+        {modal !== "" ? <Modal text={modal} /> : null}
         <TextField
           sx={{
             "& .MuiOutlinedInput-root": {
@@ -124,6 +193,16 @@ const MyComponent = () => {
         />
       </Grid>
       <Grid item xs={10} padding={5}>
+        <TextField
+          fullWidth
+          multiline
+          rows={3}
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
+          helperText="Дополнительная информация по заказу"
+        />
+      </Grid>
+      <Grid item xs={10} padding={5}>
         <Button
           onClick={onSubmitHandler}
           variant="contained"
@@ -138,4 +217,4 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default OrderForm;
