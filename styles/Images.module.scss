@@ -1,0 +1,15 @@
+.productCard__images {
+  height: 20%;
+  position: relative;
+  cursor: pointer;
+}
+
+.productCard__images:hover {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.productCard__imagesBorder {
+  border: 1px solid green;
+  border-radius: 10px;
+}

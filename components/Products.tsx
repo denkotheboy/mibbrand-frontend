@@ -63,6 +63,7 @@ const Products = ({
   return (
     <>
       <Grid
+        container
         item
         xs={10}
         padding={2}
@@ -72,40 +73,56 @@ const Products = ({
       >
         {loading && list.length === 0 && <CircularProgress />}
         {error && <span style={{ color: "red" }}>{error}</span>}
-        <ImageList cols={cols} gap={20}>
-          {list.map((item: IProductShort, index: number) => (
-            <ImageListItem
-              onClick={() => router.push(`/product/${item.id}`)}
-              key={index}
-              sx={{
-                cursor: "pointer",
-                "&:hover": {
-                  color: "green",
-                },
-              }}
-            >
-              <img
-                src={`${item.image}`}
-                srcSet={`${item.image}`}
-                alt={item.name}
-                loading="lazy"
+        {/*<ImageList cols={cols} gap={20}>*/}
+        {/*  {list.map((item: IProductShort, index: number) => (*/}
+        {/*    <ImageListItem*/}
+        {/*      onClick={() => router.push(`/product/${item.id}`)}*/}
+        {/*      key={index}*/}
+        {/*      sx={{*/}
+        {/*        cursor: "pointer",*/}
+        {/*        "&:hover": {*/}
+        {/*          color: "green",*/}
+        {/*        },*/}
+        {/*      }}*/}
+        {/*      style={{ position: "relative", width: "20vw", height: "20vw" }}*/}
+        {/*    >*/}
+        {/*      <Image*/}
+        {/*        src={item.image}*/}
+        {/*        alt={item.name}*/}
+        {/*        layout="fill"*/}
+        {/*        objectFit="contain"*/}
+        {/*      />*/}
+        {/*      <ImageListItemBar*/}
+        {/*        title={item.name}*/}
+        {/*        subtitle={<strong>{item.price} руб.</strong>}*/}
+        {/*        actionIcon={<Icon id={item.id} />}*/}
+        {/*      />*/}
+        {/*    </ImageListItem>*/}
+        {/*  ))}*/}
+        {/*</ImageList>*/}
+        {list.map((product) => (
+          <Grid
+            key={product.id}
+            item
+            xs={3}
+            padding={3}
+            onClick={() => router.push(`/product/${product.id}`)}
+          >
+            <Grid item xs={12}>
+              <Image
+                src={product.image}
+                alt={product.name}
+                height={100}
+                width={100}
+                layout="responsive"
+                objectFit="cover"
               />
-              {/*<Image*/}
-              {/*  src={item.image}*/}
-              {/*  alt={item.name}*/}
-              {/*  layout="responsive"*/}
-              {/*  height={300}*/}
-              {/*  width={300}*/}
-              {/*/>*/}
-              <ImageListItemBar
-                position="below"
-                title={item.name}
-                subtitle={<strong>{item.price} руб.</strong>}
-                actionIcon={<Icon id={item.id} />}
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
+            </Grid>
+            <Grid item xs={12}>
+              {product.name}
+            </Grid>
+          </Grid>
+        ))}
       </Grid>
       <Grid item xs={10} padding={2} textAlign="center">
         {loadMore ? (
