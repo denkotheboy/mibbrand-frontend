@@ -2,7 +2,7 @@
   cursor: pointer;
   text-align: left;
   padding: 10px;
-  font-size: 0.9vw;
+  font-size: 0.9vw
 }
 
 .productList__product:hover {
@@ -13,4 +13,31 @@
 
 .productList__product__price {
   font-size: 0.8vw;
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+  .productList__product {
+    font-size: 4vw;
+  }
+  .productList__product__price {
+    font-size: 3vw;
+  }
+}
+
+@media (min-width: 600px) and  (max-width: 900px) {
+  .productList__product {
+    font-size: 2vw;
+  }
+  .productList__product__price {
+    font-size: 1.5vw;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  .productList__product {
+    font-size: 1.5vw;
+  }
+  .productList__product__price {
+    font-size: 1.2vw;
+  }
 }

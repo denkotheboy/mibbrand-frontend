@@ -47,7 +47,7 @@ const Header = () => {
         container
         item
         xs={10}
-        sx={{ display: { xs: "none", md: "flex" } }}
+        sx={{ display: { xs: "none", lg: "flex" } }}
         justifyContent="center"
         className={style.header}
       >

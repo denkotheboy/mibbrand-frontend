@@ -1,12 +1,10 @@
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/router";
 import { api } from "../api";
 import { PRODUCTS } from "../constants";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 import Icon from "./Cart/Icon";
 import Image from "next/image";
 import classes from "../styles/Products.module.scss";
@@ -29,10 +27,6 @@ const Products = ({
   errorResp = "",
   loadMore = true,
 }: IProps) => {
-  const theme = useTheme();
-  const xs = useMediaQuery(theme.breakpoints.down("sm"));
-  const sm = useMediaQuery(theme.breakpoints.down("md"));
-  const md = useMediaQuery(theme.breakpoints.down("lg"));
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(errorResp);
@@ -49,13 +43,6 @@ const Products = ({
         }
       });
   }, [products.length]);
-
-  const cols = useMemo(() => {
-    if (xs) return 1;
-    else if (sm) return 2;
-    else if (md) return 3;
-    return 4;
-  }, [md, sm, xs]);
 
   return (
     <>
@@ -74,7 +61,10 @@ const Products = ({
           <Grid
             key={product.id}
             item
-            xs={3}
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
             className={classes.productList__product}
             onClick={() => router.push(`/product/${product.id}`)}
           >
@@ -89,7 +79,7 @@ const Products = ({
               />
             </Grid>
             <Grid container item xs={12}>
-              <Grid item xs={10} paddingLeft={1}>
+              <Grid item xs={10} paddingLeft={2}>
                 {product.name}
                 <br />
                 <span className={classes.productList__product__price}>

@@ -15,13 +15,15 @@ const Images: FC<IProps> = ({ images }) => {
 
   return (
     <Grid container item xs={12} padding={1} height="100%">
-      <Grid item xs={2} height="100%" overflow="auto">
+      <Grid item xs={1} height="100%" overflow="auto">
         {images.map((image) => (
           <>
             <Grid
               item
               xs={12}
               key={image.id}
+              onClick={() => setCurrentImage({ id: image.id, url: image.url })}
+              padding={1}
               className={
                 classes.productCard__images +
                 " " +
@@ -30,18 +32,29 @@ const Images: FC<IProps> = ({ images }) => {
                   : null)
               }
             >
-              <Image src={image.url} alt="" layout="fill" objectFit="contain" />
+              <Grid item className={classes.productCard__container}>
+                <Image
+                  src={image.url}
+                  alt=""
+                  height={100}
+                  width={100}
+                  layout="responsive"
+                  objectFit="cover"
+                />
+              </Grid>
             </Grid>
           </>
         ))}
       </Grid>
-      <Grid container item xs={10} padding={1}>
-        <Grid container item xs={12} style={{ position: "relative" }}>
+      <Grid container item xs={11} padding={1}>
+        <Grid item xs={12} style={{ position: "relative" }}>
           <Image
             src={currentImage.url}
             alt=""
-            layout="fill"
-            objectFit="contain"
+            height={100}
+            width={100}
+            layout="responsive"
+            objectFit="cover"
           />
         </Grid>
       </Grid>

@@ -10,7 +10,7 @@ const NavBarMobile = () => {
     <AppBar
       position="relative"
       color="inherit"
-      sx={{ display: { xs: "flex", md: "none" } }}
+      sx={{ display: { xs: "flex", lg: "none" } }}
     >
       <Toolbar>
         <NavigationDrawer />
