@@ -2,6 +2,8 @@ import Box from "@mui/material/Box";
 import React, { FC } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { IImage } from "../../pages/product/[id]";
+import Image from "next/image";
+import Grid from "@mui/material/Grid";
 
 interface IProps {
   images: IImage[];
@@ -9,20 +11,22 @@ interface IProps {
 
 const ImagesMobile: FC<IProps> = ({ images }) => {
   return (
-    <SwipeableViews enableMouseEvents>
-      {images.map((image, index) => (
-        <div key={index}>
-          <Box
-            component="img"
-            sx={{
-              overflow: "hidden",
-              width: "100%",
-            }}
-            src={image.url}
-          />
-        </div>
-      ))}
-    </SwipeableViews>
+    <Grid item xs={12}>
+      <SwipeableViews enableMouseEvents>
+        {images.map((image, index) => (
+          <Grid item xs={12} key={index} style={{ position: "relative" }}>
+            <Image
+              src={image.url}
+              alt=""
+              height={100}
+              width={100}
+              layout="responsive"
+              objectFit="cover"
+            />
+          </Grid>
+        ))}
+      </SwipeableViews>
+    </Grid>
   );
 };
 

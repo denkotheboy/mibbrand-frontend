@@ -58,7 +58,7 @@ const Product: FC<IProps> = ({ product }) => {
           container
           item
           xs={12}
-          sx={{ display: { md: "flex", xs: "none" } }}
+          sx={{ display: { sm: "flex", xs: "none" } }}
           justifyContent="center"
         >
           <ProductCard product={product} />
@@ -68,7 +68,7 @@ const Product: FC<IProps> = ({ product }) => {
           item
           xs={12}
           justifyContent="center"
-          sx={{ display: { md: "none", xs: "flex" } }}
+          sx={{ display: { sm: "none", xs: "flex" } }}
         >
           <Mobile product={product} />
         </Grid>

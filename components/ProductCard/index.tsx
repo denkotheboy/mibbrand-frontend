@@ -1,10 +1,7 @@
 import React, { FC } from "react";
 import Grid from "@mui/material/Grid";
 import Images from "./images";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Link from "next/link";
-import { ICategory, IProduct } from "../../pages/product/[id]";
+import { IProduct } from "../../pages/product/[id]";
 import Info from "./Info";
 import Description from "./Description";
 

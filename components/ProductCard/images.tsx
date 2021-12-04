@@ -15,7 +15,7 @@ const Images: FC<IProps> = ({ images }) => {
 
   return (
     <Grid container item xs={12} padding={1} height="100%">
-      <Grid item xs={1} height="100%" overflow="auto">
+      <Grid item sm={2} md={1} height="100%" overflow="auto">
         {images.map((image) => (
           <>
             <Grid
@@ -46,7 +46,7 @@ const Images: FC<IProps> = ({ images }) => {
           </>
         ))}
       </Grid>
-      <Grid container item xs={11} padding={1}>
+      <Grid container item sm={10} md={11} padding={1}>
         <Grid item xs={12} style={{ position: "relative" }}>
           <Image
             src={currentImage.url}

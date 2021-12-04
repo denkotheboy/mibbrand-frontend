@@ -1,5 +1,5 @@
 .productCard__images {
-  height: 9%;
+  height: 4.5vw;
   cursor: pointer;
 }
 
@@ -15,4 +15,16 @@
 .productCard__imagesBorder {
   border: 1px solid green;
   border-radius: 10px;
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .productCard__images {
+    height: 10vw;
+  }
+}
+
+@media  (min-width: 900px) and (max-width: 1200px) {
+  .productCard__images {
+    height: 5.5vw;
+  }
 }
