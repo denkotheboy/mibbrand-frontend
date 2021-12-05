@@ -24,6 +24,15 @@ const Home: NextPage<IProps> = ({ products, error, categories }) => {
       <Grid container item justifyContent="center">
         {categories !== null ? <Categories list={categories} /> : null}
       </Grid>
+      <Grid
+        container
+        item
+        textAlign="center"
+        justifyContent="center"
+        paddingTop={4}
+      >
+        <h3>Товары</h3>
+      </Grid>
       <Grid container item justifyContent="center">
         <Products products={products} errorResp={error} />
       </Grid>
