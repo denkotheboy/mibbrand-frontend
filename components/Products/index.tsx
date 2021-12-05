@@ -3,11 +3,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/router";
-import { api } from "../api";
-import { PRODUCTS } from "../constants";
-import Icon from "./Cart/Icon";
+import { api } from "../../api";
+import { PRODUCTS } from "../../constants";
+import Icon from "../Cart/Icon";
 import Image from "next/image";
-import classes from "../styles/Products.module.scss";
+import classes from "../../styles/Products.module.scss";
+import Product from "./Product";
 
 export interface IProductShort {
   id: number;
@@ -58,39 +59,13 @@ const Products = ({
         {loading && list.length === 0 && <CircularProgress />}
         {error && <span style={{ color: "red" }}>{error}</span>}
         {list.map((product) => (
-          <Grid
+          <Product
             key={product.id}
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            className={classes.productList__product}
-            onClick={() => router.push(`/product/${product.id}`)}
-          >
-            <Grid item xs={12}>
-              <Image
-                src={product.image}
-                alt={product.name}
-                height={100}
-                width={100}
-                layout="responsive"
-                objectFit="cover"
-              />
-            </Grid>
-            <Grid container item xs={12}>
-              <Grid item xs={10} paddingLeft={2}>
-                {product.name}
-                <br />
-                <span className={classes.productList__product__price}>
-                  {product.price}руб.
-                </span>
-              </Grid>
-              <Grid item xs={2} textAlign="right">
-                <Icon id={product.id} />
-              </Grid>
-            </Grid>
-          </Grid>
+            id={product.id}
+            image={product.image}
+            name={product.name}
+            price={product.price}
+          />
         ))}
       </Grid>
       <Grid item xs={10} padding={2} textAlign="center">

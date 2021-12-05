@@ -1,0 +1,55 @@
+.category__card {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+
+  .category__card__boxImage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 60%;
+  }
+
+  .category__card__boxContent {
+    display: flex;
+    width: 100%;
+  }
+
+  .category__card__text {
+    font-size: 1vw;
+    font-weight: bold;
+  }
+}
+
+.category__card:hover {
+  outline: 1px solid green;
+  color: green;
+}
+
+@media (min-width: 0) and (max-width: 600px) {
+  .category__card {
+    .category__card__text {
+      font-size: 5vw;
+      font-weight: bold;
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .category__card {
+    .category__card__text {
+      font-size: 2vw;
+      font-weight: bold;
+    }
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  .category__card {
+    .category__card__text {
+      font-size: 1.5vw;
+      font-weight: bold;
+    }
+  }
+}
+

@@ -31,11 +31,11 @@ const Table: FC<IProps> = ({ list }) => {
       <TableMui size="small">
         <TableHead>
           <TableRow>
-            <TableCell width="10%" />
+            <TableCell width="12%" />
             <TableCell width="50%">Название</TableCell>
             <TableCell width="15%">Цена</TableCell>
             <TableCell width="15%">Количество</TableCell>
-            <TableCell width="10%" />
+            <TableCell width="8%" />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -45,7 +45,14 @@ const Table: FC<IProps> = ({ list }) => {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell>
-                <Image src={item.image} width={95} height={100} />
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  height={100}
+                  width={100}
+                  layout="responsive"
+                  objectFit="cover"
+                />
               </TableCell>
               <TableCell component="th" scope="row">
                 {item.name}

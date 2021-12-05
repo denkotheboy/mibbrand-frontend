@@ -17,11 +17,10 @@ const Images: FC<IProps> = ({ images }) => {
     <Grid container item xs={12} padding={1} height="100%">
       <Grid item sm={2} md={1} height="100%" overflow="auto">
         {images.map((image) => (
-          <>
+          <React.Fragment key={image.id}>
             <Grid
               item
               xs={12}
-              key={image.id}
               onClick={() => setCurrentImage({ id: image.id, url: image.url })}
               padding={1}
               className={
@@ -43,7 +42,7 @@ const Images: FC<IProps> = ({ images }) => {
                 />
               </Grid>
             </Grid>
-          </>
+          </React.Fragment>
         ))}
       </Grid>
       <Grid container item sm={10} md={11} padding={1}>

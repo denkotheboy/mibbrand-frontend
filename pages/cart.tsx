@@ -80,7 +80,15 @@ const Cart: NextPage = () => {
         ]}
       >
         <Grid container xs={12} item justifyContent="center">
-          <Grid container item xs={12} sm={10} justifyContent="center">
+          <Grid
+            container
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={10}
+            justifyContent="center"
+          >
             {error}
             {list.length > 0 ? <Table list={list} /> : <NotFound />}
             {loading ? <CircularProgress /> : null}
@@ -89,7 +97,9 @@ const Cart: NextPage = () => {
             container
             item
             xs={12}
-            sm={10}
+            sm={12}
+            md={12}
+            lg={10}
             justifyContent="center"
             padding={5}
           >

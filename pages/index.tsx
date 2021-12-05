@@ -4,20 +4,25 @@ import Layout from "../components/Layout";
 import Grid from "@mui/material/Grid";
 import Products, { IProductShort } from "../components/Products";
 import { api } from "../api";
-import { PRODUCTS, TITLE } from "../constants";
+import { CATEGORIES, PRODUCTS, TITLE } from "../constants";
 import Carousel from "../components/Carousel";
+import Categories, { ICategory } from "../components/Categories";
 
 interface IProps {
   products: IProductShort[];
   error: string;
+  categories: ICategory[] | null;
 }
 
-const Home: NextPage<IProps> = ({ products, error }) => {
+const Home: NextPage<IProps> = ({ products, error, categories }) => {
   return (
     <Layout>
       <title>{TITLE}</title>
       <Grid container item justifyContent="center">
         <Carousel />
+      </Grid>
+      <Grid container item justifyContent="center">
+        {categories !== null ? <Categories list={categories} /> : null}
       </Grid>
       <Grid container item justifyContent="center">
         <Products products={products} errorResp={error} />
@@ -27,17 +32,32 @@ const Home: NextPage<IProps> = ({ products, error }) => {
 };
 
 export async function getServerSideProps(context: any) {
-  const resp = await api.get<IProductShort[]>(`${PRODUCTS}?from=0&limit=8`);
-  if (resp.status === 200) {
-    return {
-      props: {
-        products: resp.data,
-      },
-    };
+  let categories = null;
+  let error = "";
+  let products: IProductShort[] = [];
+  try {
+    const respProducts = await api.get<IProductShort[]>(
+      `${PRODUCTS}?from=0&limit=8`
+    );
+    const respCategories = await api.get<ICategory[]>(CATEGORIES);
+
+    if (respCategories.status === 200) {
+      categories = respCategories.data;
+    }
+    if (respProducts.status === 200) {
+      products = respProducts.data;
+    } else {
+      error = "Ошибка получения данных";
+    }
+  } catch (e) {
+    error = "Сервер недоступен";
   }
+
   return {
     props: {
-      error: resp.data,
+      products,
+      categories,
+      error,
     },
   };
 }

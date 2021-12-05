@@ -111,8 +111,15 @@ const OrderForm: FC<IProps> = ({ setError }) => {
 
   return (
     <Grid container item xs={12} justifyContent="center">
-      <Grid item xs={4} padding={3}>
-        {modal !== "" ? <Modal text={modal} /> : null}
+      {modal !== "" ? <Modal text={modal} /> : null}
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={4}
+        padding={{ xs: 0, md: 3 }}
+        paddingBottom={{ xs: 2, md: 0 }}
+      >
         <TextField
           sx={{
             "& .MuiOutlinedInput-root": {
@@ -140,7 +147,14 @@ const OrderForm: FC<IProps> = ({ setError }) => {
           }}
         />
       </Grid>
-      <Grid item xs={4} padding={3}>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={4}
+        padding={{ xs: 0, md: 3 }}
+        paddingBottom={{ xs: 2, md: 0 }}
+      >
         <MuiPhoneNumber
           sx={{
             "& .MuiOutlinedInput-root": {
@@ -164,7 +178,14 @@ const OrderForm: FC<IProps> = ({ setError }) => {
           helperText={phone.error === "" ? phone.helpText : phone.error}
         />
       </Grid>
-      <Grid item xs={4} padding={3}>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={4}
+        padding={{ xs: 0, md: 3 }}
+        paddingBottom={{ xs: 2, md: 0 }}
+      >
         <TextField
           sx={{
             "& .MuiOutlinedInput-root": {
@@ -192,7 +213,14 @@ const OrderForm: FC<IProps> = ({ setError }) => {
           }}
         />
       </Grid>
-      <Grid item xs={10} padding={5}>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={8}
+        padding={{ xs: 0, md: 3 }}
+        paddingBottom={{ xs: 2, md: 0 }}
+      >
         <TextField
           fullWidth
           multiline
@@ -202,7 +230,7 @@ const OrderForm: FC<IProps> = ({ setError }) => {
           helperText="Дополнительная информация по заказу"
         />
       </Grid>
-      <Grid item xs={10} padding={5}>
+      <Grid item xs={12} sm={8} md={8} padding={{ xs: 0, md: 3 }}>
         <Button
           onClick={onSubmitHandler}
           variant="contained"
