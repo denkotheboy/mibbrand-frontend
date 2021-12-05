@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useRouter } from "next/router";
 import { api } from "../../api";
 import { PRODUCTS } from "../../constants";
@@ -46,16 +46,11 @@ const Products = ({
   }, [products.length]);
 
   return (
-    <>
-      <Grid
-        container
-        item
-        xs={10}
-        padding={2}
-        paddingTop={5}
-        justifyContent="center"
-        textAlign="center"
-      >
+    <Grid container item xs={10} padding={2} paddingTop={5}>
+      <Grid item xs={12} textAlign="center">
+        <h3>Товары</h3>
+      </Grid>
+      <Grid container item xs={12} justifyContent="center" textAlign="center">
         {loading && list.length === 0 && <CircularProgress />}
         {error && <span style={{ color: "red" }}>{error}</span>}
         {list.map((product) => (
@@ -68,14 +63,20 @@ const Products = ({
           />
         ))}
       </Grid>
-      <Grid item xs={10} padding={2} textAlign="center">
+      <Grid
+        item
+        xs={12}
+        paddingTop={4}
+        justifyContent="center"
+        textAlign="center"
+      >
         {loadMore ? (
           <Button variant="contained" color="success" onClick={() => fetch()}>
             {loading ? <>Загрузка...</> : <>Загрузить ещё</>}
           </Button>
         ) : null}
       </Grid>
-    </>
+    </Grid>
   );
 };
 
