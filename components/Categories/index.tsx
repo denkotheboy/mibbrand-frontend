@@ -17,7 +17,8 @@ const Categories: FC<IProps> = ({ list = [] }) => {
     <Grid
       container
       item
-      xs={10}
+      xs={12}
+      md={10}
       padding={2}
       paddingTop={5}
       justifyContent="center"

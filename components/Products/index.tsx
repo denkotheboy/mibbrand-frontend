@@ -46,7 +46,7 @@ const Products = ({
   }, [products.length]);
 
   return (
-    <Grid container item xs={10} padding={2}>
+    <Grid container item xs={12} md={10} padding={2}>
       <Grid container item xs={12} justifyContent="center" textAlign="center">
         {loading && list.length === 0 && <CircularProgress />}
         {error && <span style={{ color: "red" }}>{error}</span>}

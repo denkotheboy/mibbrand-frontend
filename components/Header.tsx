@@ -12,7 +12,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import ContactsIcon from "@mui/icons-material/Contacts";
-import InfoIcon from "@mui/icons-material/Info";
 import Cart from "./Cart";
 
 export const MENU = [

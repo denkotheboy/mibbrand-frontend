@@ -57,7 +57,9 @@ const Table: FC<IProps> = ({ list }) => {
               <TableCell component="th" scope="row">
                 {item.name}
               </TableCell>
-              <TableCell>{item.price}</TableCell>
+              <TableCell>
+                {Number(item.price * item.count)}({item.price}руб./шт.)
+              </TableCell>
               <TableCell>
                 <InputCount
                   includeProduct={false}
