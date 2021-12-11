@@ -96,9 +96,9 @@ const Table: FC<IProps> = ({ list }) => {
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
             <TableCell />
             <TableCell />
-            <TableCell />
             <TableCell>Итого</TableCell>
             <TableCell>{totalPrice}руб.</TableCell>
+            <TableCell />
           </TableRow>
         </TableBody>
       </TableMui>

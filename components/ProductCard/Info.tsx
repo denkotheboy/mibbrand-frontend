@@ -14,7 +14,7 @@ interface IProps {
 const Info: FC<IProps> = ({ product }) => {
   return (
     <Grid item xs={12} textAlign="start" padding={1}>
-      Цена:
+      Цена:{" "}
       <Typography
         component="span"
         color="green"
@@ -41,21 +41,27 @@ const Info: FC<IProps> = ({ product }) => {
           <Divider variant="middle" sx={{ margin: 2 }} />
         </>
       ) : null}
-      {/*{product.color ? (*/}
-      {/*  <>*/}
-      {/*    Цвет: <span style={{ color: "green" }}>{product.color}</span>*/}
-      {/*    <Divider variant="middle" sx={{ margin: 2 }} />*/}
-      {/*  </>*/}
-      {/*) : null}*/}
+      {product.color ? (
+        <>
+          Цвет: <span style={{ whiteSpace: "pre-wrap" }}>{product.color}</span>
+          <Divider variant="middle" sx={{ margin: 2 }} />
+        </>
+      ) : null}
       {product.composition ? (
         <>
-          Состав: <span style={{ color: "green" }}>{product.composition}</span>
+          Состав:{" "}
+          <span style={{ color: "green", whiteSpace: "pre-wrap" }}>
+            {product.composition}
+          </span>
           <Divider variant="middle" sx={{ margin: 2 }} />
         </>
       ) : null}
       {product.size ? (
         <>
-          Размеры: <span style={{ color: "green" }}>{product.size}</span>
+          Размеры:{" "}
+          <span style={{ color: "green", whiteSpace: "pre-wrap" }}>
+            {product.size}
+          </span>
           <Divider variant="middle" sx={{ margin: 2 }} />
         </>
       ) : null}

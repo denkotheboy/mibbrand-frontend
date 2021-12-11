@@ -24,6 +24,7 @@ const Description: FC<IProps> = ({ description }) => {
           color: "#333",
           lineHeight: 1.5,
           width: "80%",
+          whiteSpace: "pre-wrap",
         }}
       >
         {description}
