@@ -8,7 +8,7 @@ import {
   Table as TableMui,
   IconButton,
 } from "@mui/material";
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { IProductShort } from "../Products";
 import Image from "next/image";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -26,6 +26,13 @@ interface IProps {
 
 const Table: FC<IProps> = ({ list }) => {
   const dispatch = useAppDispatch();
+
+  const totalPrice = useMemo(() => {
+    let sum = 0;
+    list.forEach((item) => (sum += item.price * item.count));
+    return sum;
+  }, [list]);
+
   return (
     <TableContainer component={Paper}>
       <TableMui size="small">
@@ -86,6 +93,13 @@ const Table: FC<IProps> = ({ list }) => {
               </TableCell>
             </TableRow>
           ))}
+          <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+            <TableCell />
+            <TableCell />
+            <TableCell />
+            <TableCell>Итого</TableCell>
+            <TableCell>{totalPrice}руб.</TableCell>
+          </TableRow>
         </TableBody>
       </TableMui>
     </TableContainer>
