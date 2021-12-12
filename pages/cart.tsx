@@ -27,6 +27,13 @@ const Cart: NextPage = () => {
   const [error, setError] = useState<string>("");
   const flag = useRef<boolean>(false);
 
+  const removeProduct = useCallback(
+    (id: number) => {
+      setProducts([...products].filter((item) => item.id !== id));
+    },
+    [products]
+  );
+
   const fetch = useCallback(async (list: number[]) => {
     setLoading(true);
     await api
@@ -90,7 +97,11 @@ const Cart: NextPage = () => {
             justifyContent="center"
           >
             {error}
-            {list.length > 0 ? <Table list={list} /> : <NotFound />}
+            {list.length > 0 ? (
+              <Table list={list} removeProduct={removeProduct} />
+            ) : (
+              <NotFound />
+            )}
             {loading ? <CircularProgress /> : null}
           </Grid>
           <Grid

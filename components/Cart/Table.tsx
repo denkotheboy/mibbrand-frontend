@@ -8,7 +8,7 @@ import {
   Table as TableMui,
   IconButton,
 } from "@mui/material";
-import React, { FC, useMemo } from "react";
+import React, { FC, useCallback, useMemo } from "react";
 import { IProductShort } from "../Products";
 import Image from "next/image";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -22,9 +22,10 @@ export interface IListCart extends IProductShort {
 
 interface IProps {
   list: IListCart[];
+  removeProduct: (id: number) => void;
 }
 
-const Table: FC<IProps> = ({ list }) => {
+const Table: FC<IProps> = ({ list, removeProduct }) => {
   const dispatch = useAppDispatch();
 
   const totalPrice = useMemo(() => {
@@ -32,6 +33,20 @@ const Table: FC<IProps> = ({ list }) => {
     list.forEach((item) => (sum += item.price * item.count));
     return sum;
   }, [list]);
+
+  const totalCount = useMemo(() => {
+    let sum = 0;
+    list.forEach((item) => (sum += item.count));
+    return sum;
+  }, [list]);
+
+  const remove = useCallback(
+    (id: number) => {
+      dispatch(removeCartList(id));
+      removeProduct(id);
+    },
+    [dispatch, removeProduct]
+  );
 
   return (
     <TableContainer component={Paper}>
@@ -86,7 +101,7 @@ const Table: FC<IProps> = ({ list }) => {
                   aria-label="delete"
                   size="large"
                   color="error"
-                  onClick={() => dispatch(removeCartList(item.id))}
+                  onClick={() => remove(item.id)}
                 >
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>
@@ -95,9 +110,10 @@ const Table: FC<IProps> = ({ list }) => {
           ))}
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
             <TableCell />
-            <TableCell />
+
             <TableCell>Итого</TableCell>
-            <TableCell>{totalPrice}руб.</TableCell>
+            <TableCell>{totalPrice} руб.</TableCell>
+            <TableCell>{totalCount} шт.</TableCell>
             <TableCell />
           </TableRow>
         </TableBody>
