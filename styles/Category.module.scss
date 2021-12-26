@@ -2,12 +2,13 @@
   display: flex;
   width: 100%;
   cursor: pointer;
+  border-radius: 30px;
 
   .category__card__boxImage {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 60%;
+    width: 50%;
   }
 
   .category__card__boxContent {

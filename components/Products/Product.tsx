@@ -40,7 +40,7 @@ const Product: FC<IProps> = ({ id, image, name, price }) => {
           {name}
           <br />
           <span className={classes.productList__product__price}>
-            {price}руб.
+            {price} руб.
           </span>
         </Grid>
         <Grid item xs={2} textAlign="right">

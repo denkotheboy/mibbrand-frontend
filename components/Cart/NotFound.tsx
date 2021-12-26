@@ -11,8 +11,13 @@ const NotFound = () => {
       <Grid item xs={10}>
         <ProductionQuantityLimitsIcon fontSize="large" />
       </Grid>
-      <Grid item xs={10} padding={3}>
-        <span style={{ fontSize: "1.5vw" }}>Корзина пуста</span>
+      <Grid
+        item
+        xs={10}
+        padding={3}
+        sx={{ fontSize: { xs: "3vw", sm: "1.2vw" } }}
+      >
+        Корзина пуста
       </Grid>
       <Grid item xs={10} padding={3}>
         <Button

@@ -112,7 +112,7 @@ const Cart: NextPage = () => {
             md={12}
             lg={10}
             justifyContent="center"
-            padding={5}
+            padding={{ xs: 1, sm: 5 }}
           >
             {list.length > 0 ? (
               <OrderForm setError={(value) => setError(value)} />

@@ -7,6 +7,7 @@ import { api } from "../api";
 import { CATEGORIES, PRODUCTS, TITLE } from "../constants";
 import Carousel from "../components/Carousel";
 import Categories, { ICategory } from "../components/Categories";
+import { Divider } from "@mui/material";
 
 interface IProps {
   products: IProductShort[];
