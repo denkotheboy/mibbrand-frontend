@@ -6,6 +6,7 @@ import { CATEGORY, PATH, SERVER, TITLE } from "../../constants";
 import { NextPage } from "next";
 import LayoutOtherPage from "../../components/LayoutOtherPage";
 import { api } from "../../api";
+import Head from "next/head";
 
 interface IProps {
   products: IProductShort[];
@@ -16,9 +17,11 @@ interface IProps {
 const Category: NextPage<IProps> = ({ products, error, category }) => {
   return (
     <Layout>
-      <title>
-        {TITLE} - {category || ""}
-      </title>
+      <Head>
+        <title>
+          {TITLE} - {category || ""}
+        </title>
+      </Head>
       <LayoutOtherPage
         title={category}
         breadCrumbs={[

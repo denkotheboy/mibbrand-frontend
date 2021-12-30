@@ -19,6 +19,7 @@ import { CART_LIST } from "../store/reducers/cart";
 import { shallowEqual } from "react-redux";
 import OrderForm from "../components/OrderForm";
 import NotFound from "../components/Cart/NotFound";
+import Head from "next/head";
 
 const Cart: NextPage = () => {
   const listToCart = useAppSelector(CART_LIST, shallowEqual);
@@ -73,7 +74,9 @@ const Cart: NextPage = () => {
 
   return (
     <Layout>
-      <title>{TITLE} - Корзина</title>
+      <Head>
+        <title>{TITLE} - Корзина</title>
+      </Head>
       <LayoutOtherPage
         title="Корзина"
         breadCrumbs={[

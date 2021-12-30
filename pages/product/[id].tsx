@@ -1,11 +1,12 @@
 import { FC } from "react";
 import LayoutOtherPage from "../../components/LayoutOtherPage";
-import { PATH, PRODUCT, SERVER } from "../../constants";
+import { PATH, PRODUCT, SERVER, TITLE } from "../../constants";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
 import Layout from "../../components/Layout";
 import ProductCard from "../../components/ProductCard";
 import Mobile from "../../components/ProductCard/Mobile";
+import Head from "next/head";
 
 export interface ICategory {
   id: number;
@@ -38,7 +39,12 @@ interface IProps {
 const Product: FC<IProps> = ({ product }) => {
   return (
     <Layout>
-      <title>{product.name}</title>
+      <Head>
+        <title>
+          {product.name} - {TITLE}
+        </title>
+      </Head>
+
       <LayoutOtherPage
         title={product.name}
         breadCrumbs={[

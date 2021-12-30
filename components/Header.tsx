@@ -20,11 +20,11 @@ export const MENU = [
     href: PATH.HOME,
     icon: <HomeIcon />,
   },
-  {
-    text: "Калькулятор",
-    href: PATH.CALCULATOR,
-    icon: <CalculateIcon />,
-  },
+  // {
+  //   text: "Калькулятор",
+  //   href: PATH.CALCULATOR,
+  //   icon: <CalculateIcon />,
+  // },
   {
     text: "Доставка",
     href: PATH.DELIVERY,

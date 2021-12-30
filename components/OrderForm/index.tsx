@@ -74,16 +74,19 @@ const OrderForm: FC<IProps> = ({ setError }) => {
   const onSubmitHandler = useCallback(async () => {
     const validName = validateName(name.value);
     if (validName) {
+      console.log(1);
       setName((prev) => ({ ...prev, error: validName }));
       return;
     }
     const validPhone = validatePhone(phone.value);
     if (validPhone) {
+      console.log(2);
       setPhone((prev) => ({ ...prev, error: validPhone }));
       return;
     }
     const validEmail = validateEmail(email.value);
     if (!validEmail) {
+      console.log(3);
       setEmail((prev) => ({ ...prev, error: "Неверный формат почты" }));
       return;
     }

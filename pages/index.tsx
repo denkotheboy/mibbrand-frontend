@@ -8,6 +8,7 @@ import { CATEGORIES, PRODUCTS, TITLE } from "../constants";
 import Carousel from "../components/Carousel";
 import Categories, { ICategory } from "../components/Categories";
 import { Divider } from "@mui/material";
+import Head from "next/head";
 
 interface IProps {
   products: IProductShort[];
@@ -18,7 +19,9 @@ interface IProps {
 const Home: NextPage<IProps> = ({ products, error, categories }) => {
   return (
     <Layout>
-      <title>{TITLE}</title>
+      <Head>
+        <title>{TITLE}</title>
+      </Head>
       <Grid container item justifyContent="center">
         <Carousel />
       </Grid>
