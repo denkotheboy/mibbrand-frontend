@@ -1,5 +1,3 @@
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 import React, { FC } from "react";
 import Image from "next/image";
 import Grid from "@mui/material/Grid";
@@ -16,28 +14,29 @@ interface IProps {
 const Category: FC<IProps> = ({ image, name, id }) => {
   const router = useRouter();
   return (
-    <Card
+    <Grid
+      item
       className={classes.category__card}
       onClick={() => router.push(`${PATH.CATEGORY}/${id}`)}
     >
-      <Box component="div" className={classes.category__card__boxImage}>
+      <Grid item xs={12}>
         <Image
           src={image}
+          alt={name}
           height={100}
           width={100}
+          className={classes.category__card__image}
           layout="responsive"
           objectFit="cover"
-          alt={name}
+          priority
         />
-      </Box>
-      <Box className={classes.category__card__boxContent}>
-        <Grid container item xs={12} alignItems="center" height="100%">
-          <Grid item xs={12} className={classes.category__card__text}>
-            {name}
-          </Grid>
+      </Grid>
+      <Grid container item xs={12}>
+        <Grid item xs={12} paddingTop={1}>
+          {name}
         </Grid>
-      </Box>
-    </Card>
+      </Grid>
+    </Grid>
   );
 };
 

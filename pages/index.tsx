@@ -35,7 +35,7 @@ const Home: NextPage<IProps> = ({ products, error, categories }) => {
         justifyContent="center"
         paddingTop={4}
       >
-        <h3>Товары</h3>
+        <h2>Товары</h2>
       </Grid>
       <Grid container item justifyContent="center">
         <Products products={products} errorResp={error} />

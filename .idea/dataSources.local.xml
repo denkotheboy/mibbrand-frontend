@@ -2,7 +2,7 @@
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="WS-213.5744.224">
     <data-source name="postgres@localhost" uuid="9cedd9ae-05bd-459a-827e-4b9fc60d505b">
-      <database-info product="PostgreSQL" version="14.0 (Debian 14.0-1.pgdg110+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.22" dbms="POSTGRES" exact-version="14.0" exact-driver-version="42.2">
+      <database-info product="PostgreSQL" version="13.3 (Debian 13.3-1.pgdg100+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.22" dbms="POSTGRES" exact-version="13.3" exact-driver-version="42.2">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />

@@ -25,11 +25,11 @@ const Categories: FC<IProps> = ({ list = [] }) => {
       textAlign="center"
     >
       <Grid item xs={12} textAlign="center">
-        <h3>Категории</h3>
+        <h2>Категории</h2>
       </Grid>
       <Grid container item xs={12} justifyContent="center">
         {list.map((item) => (
-          <Grid key={item.id} item xs={12} sm={4} md={4} lg={3} padding={1}>
+          <Grid key={item.id} item xs={4} sm={4} md={3} lg={2} padding={1}>
             <Category image={item.image} name={item.name} id={item.id} />
           </Grid>
         ))}

@@ -2,12 +2,8 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 import React, { useCallback, useState } from "react";
-import { useRouter } from "next/router";
 import { api } from "../../api";
 import { PRODUCTS } from "../../constants";
-import Icon from "../Cart/Icon";
-import Image from "next/image";
-import classes from "../../styles/Products.module.scss";
 import Product from "./Product";
 
 export interface IProductShort {
@@ -28,14 +24,13 @@ const Products = ({
   errorResp = "",
   loadMore = true,
 }: IProps) => {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(errorResp);
   const [list, setList] = useState<IProductShort[]>(products);
 
   const fetch = useCallback(async () => {
     await api
-      .get<IProductShort[]>(`${PRODUCTS}?from=${products.length}&limit=8`)
+      .get<IProductShort[]>(`${PRODUCTS}?from=${list.length}&limit=8`)
       .then((resp) => {
         if (resp.status === 200) {
           setList((prev) => [...prev, ...resp.data]);
@@ -43,7 +38,7 @@ const Products = ({
           setError(JSON.stringify(resp.data, null, 4));
         }
       });
-  }, [products.length]);
+  }, [list.length]);
 
   return (
     <Grid container item xs={12} md={10} padding={2}>
