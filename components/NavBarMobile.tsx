@@ -1,11 +1,13 @@
 import React from "react";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import Search from "./Search";
-import { TITLE } from "../constants";
+import { PATH, TITLE } from "../constants";
 import NavigationDrawer from "./NavigationDrawer";
 import Basket from "./Cart";
+import { useRouter } from "next/router";
 
 const NavBarMobile = () => {
+  const router = useRouter();
   return (
     <AppBar
       position="relative"
@@ -14,7 +16,12 @@ const NavBarMobile = () => {
     >
       <Toolbar>
         <NavigationDrawer />
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography
+          onClick={() => router.push(PATH.HOME)}
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1 }}
+        >
           {TITLE}
         </Typography>
         <Basket />
