@@ -10,7 +10,7 @@ interface Image {
   url: string;
 }
 
-export interface IProductShort {
+export interface IProduct {
   id: number;
   name: string;
   price: number;
@@ -18,7 +18,7 @@ export interface IProductShort {
 }
 
 interface IProps {
-  products: IProductShort[];
+  products: IProduct[];
   errorResp: string;
   loadMore?: boolean;
 }
@@ -30,11 +30,11 @@ const Products = ({
 }: IProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(errorResp);
-  const [list, setList] = useState<IProductShort[]>(products);
+  const [list, setList] = useState<IProduct[]>(products);
 
   const fetch = useCallback(async () => {
     await api
-      .get<IProductShort[]>(`${PRODUCTS}?from=${list.length}&limit=8`)
+      .get<IProduct[]>(`${PRODUCTS}?from=${list.length}&limit=8`)
       .then((resp) => {
         if (resp.status === 200) {
           setList((prev) => [...prev, ...resp.data]);

@@ -30,7 +30,7 @@ const Categories: FC<IProps> = ({ list = [] }) => {
       <Grid container item xs={12} justifyContent="center">
         {list.map((item) => (
           <Grid key={item.id} item xs={4} sm={4} md={3} lg={2} padding={1}>
-            <Category image={item.image} name={item.name} id={item.id} />
+            <Category {...item} />
           </Grid>
         ))}
       </Grid>

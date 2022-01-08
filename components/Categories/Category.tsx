@@ -3,7 +3,7 @@ import Image from "next/image";
 import Grid from "@mui/material/Grid";
 import classes from "../../styles/Category.module.scss";
 import { useRouter } from "next/router";
-import { PATH } from "../../constants";
+import { PATH, SERVER } from "../../constants";
 
 interface IProps {
   image: string;
@@ -21,7 +21,7 @@ const Category: FC<IProps> = ({ image, name, id }) => {
     >
       <Grid item xs={12}>
         <Image
-          src={image}
+          src={SERVER + image}
           alt={name}
           height={100}
           width={100}

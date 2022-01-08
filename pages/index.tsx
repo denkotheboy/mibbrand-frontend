@@ -2,7 +2,7 @@ import React from "react";
 import type { NextPage } from "next";
 import Layout from "../components/Layout";
 import Grid from "@mui/material/Grid";
-import Products, { IProductShort } from "../components/Products";
+import Products, { IProduct } from "../components/Products";
 import { api } from "../api";
 import { CATEGORIES, PRODUCTS, TITLE } from "../constants";
 import Carousel from "../components/Carousel";
@@ -10,7 +10,7 @@ import Categories, { ICategory } from "../components/Categories";
 import Head from "next/head";
 
 interface IProps {
-  products: IProductShort[];
+  products: IProduct[];
   error: string;
   categories: ICategory[] | null;
 }
@@ -46,9 +46,9 @@ const Home: NextPage<IProps> = ({ products, error, categories }) => {
 export async function getServerSideProps(context: any) {
   let categories = null;
   let error = "";
-  let products: IProductShort[] = [];
+  let products: IProduct[] = [];
   try {
-    const respProducts = await api.get<IProductShort[]>(`${PRODUCTS}/0-8`);
+    const respProducts = await api.get<IProduct[]>(`${PRODUCTS}/0-8`);
     const respCategories = await api.get<ICategory[]>(CATEGORIES);
 
     if (respCategories.status === 200) {

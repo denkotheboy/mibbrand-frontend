@@ -1,8 +1,9 @@
 import React, { FC, useState } from "react";
-import { IImage } from "../../pages/product/[id]";
+import { Image as IImage } from "../../pages/product/[id]";
 import Image from "next/image";
 import Grid from "@mui/material/Grid";
 import classes from "../../styles/Images.module.scss";
+import { SERVER } from "../../constants";
 
 interface IProps {
   images: IImage[];
@@ -33,7 +34,7 @@ const Images: FC<IProps> = ({ images }) => {
             >
               <Grid item className={classes.productCard__container}>
                 <Image
-                  src={image.url}
+                  src={SERVER + image.url}
                   alt=""
                   height={100}
                   width={100}
@@ -48,7 +49,7 @@ const Images: FC<IProps> = ({ images }) => {
       <Grid container item sm={10} md={11} padding={1}>
         <Grid item xs={12} style={{ position: "relative" }}>
           <Image
-            src={currentImage.url}
+            src={SERVER + currentImage.url}
             alt=""
             height={100}
             width={100}

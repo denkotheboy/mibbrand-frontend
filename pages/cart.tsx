@@ -11,7 +11,7 @@ import Grid from "@mui/material/Grid";
 import Layout from "../components/Layout";
 import LayoutOtherPage from "../components/LayoutOtherPage";
 import { api } from "../api";
-import { IProductShort } from "../components/Products";
+import { IProduct } from "../components/Products";
 import { CircularProgress } from "@mui/material";
 import Table from "../components/Cart/Table";
 import { useAppSelector } from "../hooks/store.hooks";
@@ -23,7 +23,7 @@ import Head from "next/head";
 
 const Cart: NextPage = () => {
   const listToCart = useAppSelector(CART_LIST, shallowEqual);
-  const [products, setProducts] = useState<IProductShort[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const flag = useRef<boolean>(false);
@@ -38,11 +38,11 @@ const Cart: NextPage = () => {
   const fetch = useCallback(async (list: number[]) => {
     setLoading(true);
     await api
-      .post<{ products: IProductShort[] }>(CART, { list })
+      .get<IProduct[]>(`${CART}/${list.join(",")}`)
       .then((resp) => {
         if (resp.status === 200) {
           setError("");
-          setProducts(resp.data.products);
+          setProducts(resp.data);
         } else {
           setProducts([]);
           setError("");

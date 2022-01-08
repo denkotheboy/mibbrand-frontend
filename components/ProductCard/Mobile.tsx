@@ -17,7 +17,9 @@ const Mobile: FC<IProps> = ({ product }) => {
       </Grid>
       <Grid container item xs={12} paddingTop={5}>
         <Info product={product} />
-        <Description description={product.description} />
+        {product.description ? (
+          <Description description={product.description} />
+        ) : null}
       </Grid>
     </>
   );

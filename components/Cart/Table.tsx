@@ -11,15 +11,17 @@ import {
   Divider,
 } from "@mui/material";
 import React, { FC, useCallback, useMemo } from "react";
-import { IProductShort } from "../Products";
+import { IProduct } from "../Products";
 import Image from "next/image";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAppDispatch } from "../../hooks/store.hooks";
 import { removeCartList, updateCountCartList } from "../../store/reducers/cart";
 import InputCount from "../InputCount";
 import Grid from "@mui/material/Grid";
+import noPhoto from "../../public/no-photo.png";
+import { SERVER } from "../../constants";
 
-export interface IListCart extends IProductShort {
+export interface IListCart extends IProduct {
   count: number;
 }
 
@@ -71,7 +73,9 @@ const Table: FC<IProps> = ({ list, removeProduct }) => {
           >
             <Grid item xs={3}>
               <Image
-                src={item.image}
+                src={
+                  item.images.length > 0 ? SERVER + item.images[0].url : noPhoto
+                }
                 alt={item.name}
                 height={100}
                 width={100}
@@ -123,7 +127,7 @@ const Table: FC<IProps> = ({ list, removeProduct }) => {
                   count={item.count}
                 />
                 <Typography padding={1} component="span" fontSize={12}>
-                  {Number(item.price * item.count)}({item.price}руб./шт.)
+                  {Number(item.price * item.count)} ({item.price}руб./шт.)
                 </Typography>
               </Grid>
             </Grid>
@@ -158,7 +162,11 @@ const Table: FC<IProps> = ({ list, removeProduct }) => {
               >
                 <TableCell>
                   <Image
-                    src={item.image}
+                    src={
+                      item.images.length > 0
+                        ? SERVER + item.images[0].url
+                        : noPhoto
+                    }
                     alt={item.name}
                     height={100}
                     width={100}
@@ -170,7 +178,7 @@ const Table: FC<IProps> = ({ list, removeProduct }) => {
                   {item.name}
                 </TableCell>
                 <TableCell>
-                  {Number(item.price * item.count)}({item.price}руб./шт.)
+                  {Number(item.price * item.count)} ({item.price}руб./шт.)
                 </TableCell>
                 <TableCell>
                   <InputCount

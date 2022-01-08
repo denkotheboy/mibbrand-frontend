@@ -8,13 +8,14 @@ import ProductCard from "../../components/ProductCard";
 import Mobile from "../../components/ProductCard/Mobile";
 import Head from "next/head";
 
-export interface ICategory {
-  id: number;
-  name: string;
-  image: string;
+export interface Category {
+  category: {
+    id: number;
+    name: string;
+  };
 }
 
-export interface IImage {
+export interface Image {
   id: number;
   url: string;
   product: number;
@@ -24,12 +25,12 @@ export interface IProduct {
   id: number;
   name: string;
   price: number;
-  color: string;
-  size: string;
-  description: string;
-  composition: string;
-  categories: ICategory[];
-  images: IImage[];
+  color?: string;
+  size?: string;
+  description?: string;
+  composition?: string;
+  categories: Category[];
+  images: Image[];
 }
 
 interface IProps {
@@ -54,7 +55,7 @@ const Product: FC<IProps> = ({ product, error = "" }) => {
             color: "green",
             text: product
               ? product.categories.length > 0
-                ? product.categories[0].name
+                ? product.categories[0].category.name
                 : product.name
               : "404",
             href: PATH.HOME,
@@ -94,7 +95,7 @@ const Product: FC<IProps> = ({ product, error = "" }) => {
 };
 
 export async function getServerSideProps({ params }: { params: any }) {
-  const resp = await axios.get<IProduct>(`${SERVER}${PRODUCT}?id=${params.id}`);
+  const resp = await axios.get<IProduct>(`${SERVER}${PRODUCT}/${params.id}`);
   if (resp.status === 200) {
     return {
       props: {

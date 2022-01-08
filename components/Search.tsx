@@ -54,7 +54,7 @@ const Search = () => {
 
   const fetch = useCallback(async () => {
     setLoading(true);
-    await get(`${SEARCH}?query=${value}`)
+    await get<IProductSearch[]>(`${SEARCH}/${value}`)
       .then((resp: any) => {
         if (resp.status === 200) {
           setList(resp.data.list);

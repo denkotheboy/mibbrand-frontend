@@ -17,7 +17,9 @@ const ProductCard: FC<IProps> = ({ product }) => {
       </Grid>
       <Grid item xs={4}>
         <Info product={product} />
-        <Description description={product.description} />
+        {product.description ? (
+          <Description description={product.description} />
+        ) : null}
       </Grid>
     </Grid>
   );

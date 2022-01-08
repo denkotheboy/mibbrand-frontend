@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Typography from "@mui/material/Typography";
-import { ICategory, IProduct } from "../../pages/product/[id]";
+import { Category, IProduct } from "../../pages/product/[id]";
 import Link from "next/link";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
@@ -28,10 +28,10 @@ const Info: FC<IProps> = ({ product }) => {
       {product.categories.length > 0 ? (
         <>
           Категория:{" "}
-          {product.categories.map((categories: ICategory, i) => (
-            <Link href={`/category/${categories.id}`} passHref key={i}>
+          {product.categories.map((categories: Category, i) => (
+            <Link href={`/category/${categories.category.id}`} passHref key={i}>
               <Chip
-                label={categories.name}
+                label={categories.category.name}
                 variant="outlined"
                 color="success"
                 size="small"
