@@ -4,15 +4,11 @@ import Grid from "@mui/material/Grid";
 import Image from "next/image";
 import Icon from "../Cart/Icon";
 import { useRouter } from "next/router";
+import { IProductShort } from "./index";
+import noPhoto from "../../public/no-photo.png";
+import { SERVER } from "../../constants";
 
-interface IProps {
-  id: number;
-  image: string;
-  name: string;
-  price: number;
-}
-
-const Product: FC<IProps> = ({ id, image, name, price }) => {
+const Product: FC<IProductShort> = ({ id, images, name, price }) => {
   const router = useRouter();
   return (
     <Grid
@@ -26,7 +22,7 @@ const Product: FC<IProps> = ({ id, image, name, price }) => {
     >
       <Grid item xs={12}>
         <Image
-          src={image}
+          src={images.length > 0 ? SERVER + images[0].url : noPhoto}
           alt={name}
           height={100}
           width={100}

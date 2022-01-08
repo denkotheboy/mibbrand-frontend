@@ -17,6 +17,15 @@ import React from "react";
 
 const Footer = () => {
   const router = useRouter();
+
+  const info = (
+    <>
+      ЧПУ столярная мастерская. Собственное проивзводство <br />
+      Изготовление изделий из дерева, серийные изделий и индивидуальные заказы{" "}
+      <br />
+    </>
+  );
+
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
     "& .MuiBadge-badge": {
       right: -3,
@@ -25,9 +34,6 @@ const Footer = () => {
       padding: "0 4px",
     },
   }));
-
-  const info =
-    "Zigcy Lite is a customizer based WooCommerce Theme built to create stunning e-commerce or online stores.This theme that comes up with deep WooCommerce integration introduces all the WooCommerce features in the most brilliant way possible.";
 
   return (
     <Grid
@@ -39,15 +45,24 @@ const Footer = () => {
       marginTop={5}
     >
       <Grid
+        container
         item
         md={5}
         sm={6}
         padding={2}
         sx={{ display: { xs: "none", sm: "flex" } }}
       >
+        <Grid item xs={12} border={1}>
+          <Image
+            src={logo}
+            alt="Logo"
+            height={100}
+            width={100}
+            layout="responsive"
+            objectFit="cover"
+          />
+        </Grid>
         <Grid item xs={12} padding={1} className={style.info}>
-          <Image src={logo} alt="Logo" height={60} />
-          <br />
           {info}
         </Grid>
       </Grid>
@@ -73,8 +88,22 @@ const Footer = () => {
           className={style.info}
           textAlign="center"
         >
-          <Image src={logo} alt="Logo" height={40} />
-          <br />
+          <Image
+            src={logo}
+            alt="Logo"
+            height={100}
+            width={100}
+            layout="responsive"
+            objectFit="cover"
+          />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          padding={2}
+          className={style.info}
+          textAlign="center"
+        >
           {info}
         </Grid>
       </Grid>

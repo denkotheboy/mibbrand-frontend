@@ -6,11 +6,15 @@ import { api } from "../../api";
 import { PRODUCTS } from "../../constants";
 import Product from "./Product";
 
+interface Image {
+  url: string;
+}
+
 export interface IProductShort {
   id: number;
   name: string;
   price: number;
-  image: string;
+  images: Image[];
 }
 
 interface IProps {
@@ -46,13 +50,7 @@ const Products = ({
         {loading && list.length === 0 && <CircularProgress />}
         {error && <span style={{ color: "red" }}>{error}</span>}
         {list.map((product) => (
-          <Product
-            key={product.id}
-            id={product.id}
-            image={product.image}
-            name={product.name}
-            price={product.price}
-          />
+          <Product key={product.id} {...product} />
         ))}
       </Grid>
       <Grid

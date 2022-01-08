@@ -33,51 +33,61 @@ export interface IProduct {
 }
 
 interface IProps {
-  product: IProduct;
+  product?: IProduct;
+  error: string;
 }
 
-const Product: FC<IProps> = ({ product }) => {
+const Product: FC<IProps> = ({ product, error = "" }) => {
   return (
     <Layout>
       <Head>
         <title>
-          {product.name} - {TITLE}
+          {product ? product.name : error} - {TITLE}
         </title>
       </Head>
 
       <LayoutOtherPage
-        title={product.name}
+        title={product ? product.name : error}
         breadCrumbs={[
           { color: "#000000", text: "Главная", href: PATH.HOME, hover: "#000" },
           {
             color: "green",
-            text:
-              product.categories.length > 0
+            text: product
+              ? product.categories.length > 0
                 ? product.categories[0].name
-                : product.name,
+                : product.name
+              : "404",
             href: PATH.HOME,
             hover: "green",
           },
         ]}
       >
-        <Grid
-          container
-          item
-          xs={12}
-          sx={{ display: { sm: "flex", xs: "none" } }}
-          justifyContent="center"
-        >
-          <ProductCard product={product} />
-        </Grid>
-        <Grid
-          container
-          item
-          xs={12}
-          justifyContent="center"
-          sx={{ display: { sm: "none", xs: "flex" } }}
-        >
-          <Mobile product={product} />
-        </Grid>
+        {product ? (
+          <>
+            <Grid
+              container
+              item
+              xs={12}
+              sx={{ display: { sm: "flex", xs: "none" } }}
+              justifyContent="center"
+            >
+              <ProductCard product={product} />
+            </Grid>
+            <Grid
+              container
+              item
+              xs={12}
+              justifyContent="center"
+              sx={{ display: { sm: "none", xs: "flex" } }}
+            >
+              <Mobile product={product} />
+            </Grid>
+          </>
+        ) : (
+          <Grid container item xs={12} justifyContent="center">
+            {error}
+          </Grid>
+        )}
       </LayoutOtherPage>
     </Layout>
   );
@@ -94,8 +104,7 @@ export async function getServerSideProps({ params }: { params: any }) {
   }
   return {
     props: {
-      product: null,
-      error: resp.data,
+      error: "Товар не найден",
     },
   };
 }

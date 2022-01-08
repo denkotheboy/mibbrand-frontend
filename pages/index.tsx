@@ -7,7 +7,6 @@ import { api } from "../api";
 import { CATEGORIES, PRODUCTS, TITLE } from "../constants";
 import Carousel from "../components/Carousel";
 import Categories, { ICategory } from "../components/Categories";
-import { Divider } from "@mui/material";
 import Head from "next/head";
 
 interface IProps {
@@ -49,9 +48,7 @@ export async function getServerSideProps(context: any) {
   let error = "";
   let products: IProductShort[] = [];
   try {
-    const respProducts = await api.get<IProductShort[]>(
-      `${PRODUCTS}?from=0&limit=8`
-    );
+    const respProducts = await api.get<IProductShort[]>(`${PRODUCTS}/0-8`);
     const respCategories = await api.get<ICategory[]>(CATEGORIES);
 
     if (respCategories.status === 200) {

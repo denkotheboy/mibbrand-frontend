@@ -5,7 +5,7 @@ import { PATH } from "../constants";
 import { useRouter } from "next/router";
 import style from "../styles/Header.module.scss";
 import Image from "next/image";
-import logo from "../public/logo5.png";
+import logo from "../public/logo.png";
 import Search from "./Search";
 import NavBarMobile from "./NavBarMobile";
 import HomeIcon from "@mui/icons-material/Home";

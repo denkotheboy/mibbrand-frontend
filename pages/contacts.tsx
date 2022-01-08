@@ -30,6 +30,8 @@ const Contacts = () => {
             height="400"
             frameBorder="0"
           />
+          г. Екатеринбург, пос. Широкая речка, ул. Перевальная, 67 <br />
+          Телефон: +7 (922) 111-0884 (Мастерская)
         </Grid>
       </LayoutOtherPage>
     </Layout>
