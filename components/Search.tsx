@@ -15,8 +15,9 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { get } from "../api";
-import { SEARCH } from "../constants";
+import { SEARCH, SERVER } from "../constants";
 import { useRouter } from "next/router";
+import noPhoto from "../public/no-photo.png";
 
 export interface IProductSearch {
   id: number;
@@ -57,7 +58,7 @@ const Search = () => {
     await get<IProductSearch[]>(`${SEARCH}/${value}`)
       .then((resp: any) => {
         if (resp.status === 200) {
-          setList(resp.data.list);
+          setList(resp.data);
         } else if (resp.status === 204) {
           setList([]);
         }
@@ -144,7 +145,11 @@ const Search = () => {
                         <Avatar
                           variant="rounded"
                           alt={item.name}
-                          src={item.image}
+                          src={
+                            item.image !== ""
+                              ? SERVER + item.image
+                              : noPhoto.src
+                          }
                           sx={{ width: 56, height: 56, mr: 2 }}
                         />
                       </ListItemAvatar>
