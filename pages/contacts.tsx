@@ -52,7 +52,6 @@ const Contacts = () => {
                 width: { xs: "100%", lg: "80%" },
                 bgcolor: "background.paper",
               }}
-              subheader={<ListSubheader>Контакты</ListSubheader>}
             >
               <ListItem>
                 <ListItemIcon>

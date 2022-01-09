@@ -12,7 +12,7 @@ export const PATH = {
   CATEGORY: "/category",
 };
 
-export const SERVER = "http://localhost:8000/api/";
+export const SERVER = "http://192.168.1.151:8000/api/";
 export const TIMEOUT = 90;
 
 export const PRODUCT = "product";
