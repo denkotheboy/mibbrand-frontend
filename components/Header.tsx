@@ -51,7 +51,7 @@ const Header = () => {
         className={style.header}
       >
         <Grid item xs={2} padding={1} textAlign="start">
-          <Image src={logo} alt="Logo" />
+          <Image src={logo} alt="Logo" onClick={() => router.push(PATH.HOME)} />
         </Grid>
         <Grid container item xs={6} padding={1} alignItems="center">
           <Grid item container xs alignContent="center">

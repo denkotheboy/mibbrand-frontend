@@ -14,6 +14,7 @@ import logo from "../public/logo.png";
 import { MENU } from "./Header";
 import NavigationDrawer from "./NavigationDrawer";
 import React from "react";
+import { PATH } from "../constants";
 
 const Footer = () => {
   const router = useRouter();
@@ -52,15 +53,8 @@ const Footer = () => {
         padding={2}
         sx={{ display: { xs: "none", sm: "flex" } }}
       >
-        <Grid item xs={12} border={1}>
-          <Image
-            src={logo}
-            alt="Logo"
-            height={100}
-            width={100}
-            layout="responsive"
-            objectFit="cover"
-          />
+        <Grid item xs={12}>
+          <Image src={logo} alt="Logo" onClick={() => router.push(PATH.HOME)} />
         </Grid>
         <Grid item xs={12} padding={1} className={style.info}>
           {info}
@@ -80,22 +74,15 @@ const Footer = () => {
           </StyledBadge>
         </IconButton>
       </Grid>
-      <Grid item xs={12} sx={{ display: { xs: "flex", sm: "none" } }}>
-        <Grid
-          item
-          xs={12}
-          padding={2}
-          className={style.info}
-          textAlign="center"
-        >
-          <Image
-            src={logo}
-            alt="Logo"
-            height={100}
-            width={100}
-            layout="responsive"
-            objectFit="cover"
-          />
+      <Grid
+        container
+        justifyContent="center"
+        item
+        xs={12}
+        sx={{ display: { xs: "flex", sm: "none" } }}
+      >
+        <Grid item xs={8} className={style.info} textAlign="center">
+          <Image src={logo} alt="Logo" onClick={() => router.push(PATH.HOME)} />
         </Grid>
         <Grid
           item
