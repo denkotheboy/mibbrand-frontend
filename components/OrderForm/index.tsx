@@ -50,21 +50,28 @@ const OrderForm: FC<IProps> = ({ setError }) => {
 
   const fetch = useCallback(async () => {
     setLoading(true);
+    let productListStr = ``;
+
+    products.forEach(
+      (product) =>
+        (productListStr += `ID: ${product.id}\n${window.location.href.replace(
+          "cart",
+          `product/${product.id}`
+        )}\nКол-во: ${product.count}\n\n`)
+    );
+
+    const message = `Фио: ${name.value} \nТелефон: ${phone.value} \nПочта: ${email.value} \n\nТовар:\n${productListStr} \nКомментарий: ${comments}`;
     await api
-      .post(ORDER, {
-        data: {
-          full_name: name.value,
-          phone: phone.value,
-          email: email.value,
-          comments,
-          products,
-        },
-      })
+      .post(
+        `https://api.telegram.org/bot5046859810:AAHSQJoBdll4_8OuaaoJ8ao7mJ5Rev_XB6I/sendMessage?chat_id=-795939673&parse_mode=html&text=${encodeURI(
+          message
+        )}`
+      )
       .then((resp) => {
         if (resp.status === 200) {
           setModal("Заявка успешно отправлена");
         } else {
-          setError(resp.data);
+          setError(JSON.stringify(resp.data));
         }
       })
       .catch((e) => setError(JSON.stringify(e)));
@@ -74,19 +81,16 @@ const OrderForm: FC<IProps> = ({ setError }) => {
   const onSubmitHandler = useCallback(async () => {
     const validName = validateName(name.value);
     if (validName) {
-      console.log(1);
       setName((prev) => ({ ...prev, error: validName }));
       return;
     }
     const validPhone = validatePhone(phone.value);
     if (validPhone) {
-      console.log(2);
       setPhone((prev) => ({ ...prev, error: validPhone }));
       return;
     }
     const validEmail = validateEmail(email.value);
     if (!validEmail) {
-      console.log(3);
       setEmail((prev) => ({ ...prev, error: "Неверный формат почты" }));
       return;
     }
