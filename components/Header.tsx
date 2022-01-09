@@ -73,7 +73,7 @@ const Header = () => {
         <Grid container item xs={2} alignItems="center">
           <Grid item xs justifyContent="center">
             <a
-              href={"tel:+79221775194"}
+              href="tel:+79221775194"
               style={{ color: "#000", textDecorationLine: "none" }}
             >
               <Button
