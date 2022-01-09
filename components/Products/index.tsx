@@ -33,15 +33,13 @@ const Products = ({
   const [list, setList] = useState<IProduct[]>(products);
 
   const fetch = useCallback(async () => {
-    await api
-      .get<IProduct[]>(`${PRODUCTS}?from=${list.length}&limit=8`)
-      .then((resp) => {
-        if (resp.status === 200) {
-          setList((prev) => [...prev, ...resp.data]);
-        } else {
-          setError(JSON.stringify(resp.data, null, 4));
-        }
-      });
+    await api.get<IProduct[]>(`${PRODUCTS}/${list.length}-8`).then((resp) => {
+      if (resp.status === 200) {
+        setList((prev) => [...prev, ...resp.data]);
+      } else {
+        setError(JSON.stringify(resp.data, null, 4));
+      }
+    });
   }, [list.length]);
 
   return (
