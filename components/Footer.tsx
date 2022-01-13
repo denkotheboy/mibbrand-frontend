@@ -21,8 +21,8 @@ const Footer = () => {
 
   const info = (
     <>
-      ЧПУ столярная мастерская. Собственное проивзводство <br />
-      Изготовление изделий из дерева, серийные изделий и индивидуальные заказы{" "}
+      ЧПУ столярная мастерская. Собственное производство <br />
+      Изготовление изделий из дерева, серийные изделий и индивидуальные заказы
       <br />
     </>
   );
@@ -53,9 +53,9 @@ const Footer = () => {
         padding={2}
         sx={{ display: { xs: "none", sm: "flex" } }}
       >
-        <Grid item xs={12}>
-          <Image src={logo} alt="Logo" onClick={() => router.push(PATH.HOME)} />
-        </Grid>
+        {/*<Grid item xs={12}>*/}
+        {/*  <Image src={logo} alt="Logo" onClick={() => router.push(PATH.HOME)} />*/}
+        {/*</Grid>*/}
         <Grid item xs={12} padding={1} className={style.info}>
           {info}
         </Grid>
@@ -81,9 +81,9 @@ const Footer = () => {
         xs={12}
         sx={{ display: { xs: "flex", sm: "none" } }}
       >
-        <Grid item xs={8} className={style.info} textAlign="center">
-          <Image src={logo} alt="Logo" onClick={() => router.push(PATH.HOME)} />
-        </Grid>
+        {/*<Grid item xs={8} className={style.info} textAlign="center">*/}
+        {/*  <Image src={logo} alt="Logo" onClick={() => router.push(PATH.HOME)} />*/}
+        {/*</Grid>*/}
         <Grid
           item
           xs={12}
@@ -100,6 +100,7 @@ const Footer = () => {
         sm={6}
         padding={2}
         sx={{ display: { xs: "none", sm: "flex" } }}
+        textAlign="right"
       >
         <Grid item xs padding={2}>
           {MENU.map((item, index) => (

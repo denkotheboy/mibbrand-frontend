@@ -30,11 +30,11 @@ const Contacts = () => {
         ]}
       >
         <Grid container xs={12} item justifyContent="center">
-          <Grid item xs={10} sm={6} md={5} lg={4}>
+          <Grid item xs={11} sm={6} md={5} lg={4}>
             <iframe
-              src="https://yandex.ru/map-widget/v1/?um=constructor%3A3ed3f42d80ba531bf149cf028b5c9f83d5bc649e5e62c4146c3ecaa75c4a4fbc&amp;source=constructor"
+              src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a268a5e518374dd94c53a5628c589f227efab454cf63f5bfa8190cb2c3d03ea&amp;source=constructor"
               width="100%"
-              height="400"
+              height="507"
               frameBorder="0"
             />
           </Grid>

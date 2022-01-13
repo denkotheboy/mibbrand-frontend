@@ -48,10 +48,14 @@ const Header = () => {
         xs={10}
         sx={{ display: { xs: "none", lg: "flex" } }}
         justifyContent="center"
-        className={style.header}
       >
         <Grid item xs={2} padding={1} textAlign="start">
-          <Image src={logo} alt="Logo" onClick={() => router.push(PATH.HOME)} />
+          <Image
+            className={style.header__logo}
+            src={logo}
+            alt="Logo"
+            onClick={() => router.push(PATH.HOME)}
+          />
         </Grid>
         <Grid container item xs={6} padding={1} alignItems="center">
           <Grid item container xs alignContent="center">
@@ -61,7 +65,7 @@ const Header = () => {
                   onClick={() => router.push(item.href)}
                   variant="text"
                   color="inherit"
-                  className={style.button}
+                  className={style.header__button}
                   fullWidth
                 >
                   <strong>{item.text}</strong>
@@ -72,13 +76,10 @@ const Header = () => {
         </Grid>
         <Grid container item xs={2} alignItems="center">
           <Grid item xs justifyContent="center">
-            <a
-              href="tel:+79221775194"
-              style={{ color: "#000", textDecorationLine: "none" }}
-            >
+            <a href="tel:+79221775194" className={style.header__phone__a}>
               <Button
                 color="inherit"
-                className={style.button}
+                className={style.header__button}
                 startIcon={<Phone />}
                 variant="text"
                 fullWidth
