@@ -3,13 +3,12 @@ export const TITLE = "Mibbrand";
 export const PATH = {
   HOME: "/",
   CONTACTS: "/contacts",
-  ABOUT: "/about",
   NO_MATCH: "*",
   PRODUCT: "/product/:id",
-  CALCULATOR: "/calculator",
   DELIVERY: "/delivery",
   CART: "/cart",
   CATEGORY: "/category",
+  SERVICES: "/services",
 };
 
 export const SERVER = "http://192.168.1.151:8000/api/";
