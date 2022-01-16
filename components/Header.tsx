@@ -20,11 +20,11 @@ export const MENU = [
     href: PATH.HOME,
     icon: <HomeIcon />,
   },
-  {
-    text: "Услуги",
-    href: PATH.SERVICES,
-    icon: <CalculateIcon />,
-  },
+  // {
+  //   text: "Услуги",
+  //   href: PATH.SERVICES,
+  //   icon: <CalculateIcon />,
+  // },
   {
     text: "Доставка",
     href: PATH.DELIVERY,

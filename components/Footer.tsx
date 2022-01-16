@@ -9,12 +9,9 @@ import {
 import style from "../styles/Footer.module.scss";
 import { Instagram } from "@mui/icons-material";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import logo from "../public/logo.png";
 import { MENU } from "./Header";
 import NavigationDrawer from "./NavigationDrawer";
 import React from "react";
-import { PATH } from "../constants";
 
 const Footer = () => {
   const router = useRouter();
@@ -22,7 +19,7 @@ const Footer = () => {
   const info = (
     <>
       ЧПУ столярная мастерская. Собственное производство <br />
-      Изготовление изделий из дерева, серийные изделий и индивидуальные заказы
+      Изготовление изделий из дерева, серийныx изделий и индивидуальныx заказов
       <br />
     </>
   );

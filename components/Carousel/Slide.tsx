@@ -70,16 +70,16 @@ const Slide: FC<IProps> = ({
                     {body}
                   </Typography>
                 </CardContent>
-                <CardActions>
-                  <Button
-                    className={styles.button}
-                    variant="contained"
-                    size="large"
-                    onClick={onClick}
-                  >
-                    {button}
-                  </Button>
-                </CardActions>
+                {/*<CardActions>*/}
+                {/*  <Button*/}
+                {/*    className={styles.button}*/}
+                {/*    variant="contained"*/}
+                {/*    size="large"*/}
+                {/*    onClick={onClick}*/}
+                {/*  >*/}
+                {/*    {button}*/}
+                {/*  </Button>*/}
+                {/*</CardActions>*/}
               </Card>
             </Grid>
           </Grid>
