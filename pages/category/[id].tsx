@@ -19,7 +19,7 @@ const Category: NextPage<IProps> = ({ products, error, category }) => {
     <Layout>
       <Head>
         <title>
-          {TITLE} - {category || ""}
+          {category || ""} - {TITLE}
         </title>
       </Head>
       <LayoutOtherPage

@@ -75,7 +75,7 @@ const Cart: NextPage = () => {
   return (
     <Layout>
       <Head>
-        <title>{TITLE} - Корзина</title>
+        <title>Корзина - {TITLE}</title>
       </Head>
       <LayoutOtherPage
         title="Корзина"
