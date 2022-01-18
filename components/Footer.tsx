@@ -109,11 +109,17 @@ const Footer = () => {
               {item.text}
             </Button>
           ))}
-          <IconButton aria-label="cart">
-            <StyledBadge badgeContent={0} color="success">
-              <Instagram fontSize="large" />
-            </StyledBadge>
-          </IconButton>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/mibbrend/"
+          >
+            <IconButton aria-label="cart">
+              <StyledBadge badgeContent={0} color="success">
+                <Instagram fontSize="large" />
+              </StyledBadge>
+            </IconButton>
+          </a>
         </Grid>
       </Grid>
     </Grid>
