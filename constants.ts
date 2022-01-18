@@ -11,7 +11,7 @@ export const PATH = {
   SERVICES: "/services",
 };
 
-export const SERVER = "http://localhost:19090/api/";
+export const SERVER = "http://89.108.71.63:19090/api/";
 export const TIMEOUT = 90;
 
 export const PRODUCT = "product";
