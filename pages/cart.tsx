@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { NextPage } from "next";
-import { CART, PATH, TITLE } from "../constants";
+import { CART, PATH, SERVER, TITLE } from "../constants";
 import Grid from "@mui/material/Grid";
 import Layout from "../components/Layout";
 import LayoutOtherPage from "../components/LayoutOtherPage";
@@ -38,7 +38,7 @@ const Cart: NextPage = () => {
   const fetch = useCallback(async (list: number[]) => {
     setLoading(true);
     await api
-      .get<IProduct[]>(`${CART}/${list.join(",")}`)
+      .get<IProduct[]>(`${SERVER}${CART}/${list.join(",")}`)
       .then((resp) => {
         if (resp.status === 200) {
           setError("");
