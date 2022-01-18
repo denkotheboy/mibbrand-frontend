@@ -1,4 +1,4 @@
-export const TITLE = "Mibbrand";
+export const TITLE = "Mibbrand - ЧПУ столярная мастерская";
 
 export const PATH = {
   HOME: "/",
