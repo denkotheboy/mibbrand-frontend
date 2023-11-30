@@ -1,0 +1,10 @@
+.inputCount__input {
+  height: 30px;
+  border: 1px solid green;
+  border-radius: .25rem;
+  outline: none;
+  width: 70px;
+}
+.inputCount__input:focus {
+  outline: 1px solid green;
+}

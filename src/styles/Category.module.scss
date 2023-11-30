@@ -1,0 +1,33 @@
+.category__card {
+  font-weight: 700;
+  font-size: 1vw;
+
+  .category__card__image {
+    border-radius: 10px;
+  }
+}
+
+.category__card:hover {
+  cursor: pointer;
+  color: green;
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+  .category__card {
+    font-size: 3vw;
+  }
+}
+
+@media (min-width: 600px) and  (max-width: 900px) {
+  .category__card {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+  .category__card {
+    font-size: 1.2vw;
+  }
+}
+
+
