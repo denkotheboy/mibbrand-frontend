@@ -2,9 +2,9 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 import React, { useCallback, useState } from "react";
-import { api } from "../../api";
-import { PRODUCTS } from "../../constants";
+import { api } from "api";
 import Product from "./Product";
+import { PRODUCTS } from "constants/api";
 
 interface Image {
   url: string;
