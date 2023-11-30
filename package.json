@@ -11,33 +11,33 @@
     "ts-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
-    "@mui/icons-material": "^5.0.5",
-    "@mui/material": "^5.0.6",
-    "@reduxjs/toolkit": "^1.6.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.19",
     "axios": "^0.24.0",
     "material-ui-phone-number": "^3.0.0",
     "next": "^14.0.3",
     "pm2": "^5.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^7.2.6",
-    "react-swipeable-views": "^0.14.0",
-    "react-swipeable-views-utils": "^0.14.0",
-    "sass": "^1.69.5",
-    "sharp": "^0.29.2"
+    "sass": "^1.69.5"
   },
   "devDependencies": {
-    "@types/node": "16.11.6",
-    "@types/react": "17.0.33",
-    "@types/react-swipeable-views": "^0.13.1",
-    "@types/react-swipeable-views-core": "^0.13.0",
-    "@types/react-swipeable-views-utils": "^0.13.3",
-    "eslint": "7",
-    "eslint-config-next": "12.0.1",
+    "@next/eslint-plugin-next": "^14.0.3",
+    "@types/node": "^20.10.1",
+    "@types/react": "^18.2.39",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "eslint-config-next": "^14.0.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.4.1",
     "react-swipeable-views-core": "^0.14.0",
     "typescript": "^5.3.2"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
